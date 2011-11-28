@@ -1,0 +1,1077 @@
+\chapter{Grenzwerte von Folgen und Funktionen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Grenzwerte von Folgen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Grenzwerte von Folgen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Einleitung}
+\textbf{Definition:\;} Eine Folge ist eine Funktion  von $\nat$ (oder $\natpos$) nach $\real$, d.h. jedem $n \in \nat$ wird ein $a_n \in \real$ zugeordnet. \par \abstand
+\textbf{Schreibweisen:\;} $(a_n)_{n \in \nat}$, $(a_n)_{n \geq 0}$ oder $a_0, a_1, a_2, \ldots$ \par \abstand
+\textbf{Beispiele:}
+\begin{itemize}
+    \item explizite Definition:
+    \begin{enumerate}
+        \item konstante Folge ($c \in \real$):
+        \begin{itemize}
+            \item $a_n = c$
+            \item $(c)_{n \in \nat}$
+        \end{itemize}
+        \item arithmetische Folge ($c, d \in \real$):
+        \begin{itemize}
+            \item $a_n = c + n \cdot d$
+            \item $(c + n \cdot d)_{n \in \nat}$
+            \item $c, c+d, c+2d, \ldots$
+        \end{itemize}
+        \item geometrische Folge ($c, q \in \real, q \neq 0$):
+        \begin{itemize}
+            \item $a_n = c \cdot q^n$
+            \item $(c \cdot q^n)_{n \in \nat}$
+            \item $c, cq, cq^2, cq^3, \ldots$
+        \end{itemize}
+        \seite
+        \item harmonische Folge ($n \geq 1$):
+        \begin{itemize}
+            \item $a_n = \frac{1}{n}$
+            \item $\left( \frac{1}{n} \right)_{n \in \natpos}$
+            \item $1, \frac{1}{2}, \frac{1}{3}, \ldots$
+        \end{itemize}
+    \end{enumerate}
+    \seite
+    \item rekursive Definition:
+    \begin{enumerate}
+        \item konstante Folge:
+        \begin{itemize}
+            \item $a_0 = c$, $a_{n+1} = a_n$
+        \end{itemize}
+        \item arithmetische Folge:
+        \begin{itemize}
+            \item $a_0 = c$, $a_{n+1} = a_n + d$
+        \end{itemize}
+        \item geometrische Folge:
+        \begin{itemize}
+            \item $a_0 = c$, $a_{n+1} = a_n \cdot q$
+        \end{itemize}
+        \item Fibonacci-Zahlen:
+        \begin{itemize}
+            \item $a_0 = 0$, $a_1 = 1$, $a_{n+2} = a_n + a_{n+1}$
+        \end{itemize}
+    \end{enumerate}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Beschränktheit und Monotonie}\index{Beschränktheit}\index{Monotonie}
+\textbf{Definition:\;} Die Folge $(a_n)_{n \in \nat}$ heißt genau dann $\ldots$, wenn
+\begin{itemize}
+    \item beschränkt
+    \begin{eqnarray*}
+        \exists K \in \real \platz \forall n \in \nat \platz |a_n| \leq K
+    \end{eqnarray*}
+    \item von unten beschränkt
+    \begin{eqnarray*}
+        \exists K \in \real \platz \forall n \in \nat \platz a_n \geq K
+    \end{eqnarray*}
+    \item von oben beschränkt
+    \begin{eqnarray*}
+        \exists K \in \real \platz \forall n \in \nat \platz a_n \leq K
+    \end{eqnarray*}
+    \item monoton wachsend
+    \begin{eqnarray*}
+        \forall n \in \nat \platz a_{n+1} \geq a_n
+    \end{eqnarray*}
+    \item streng monoton wachsend
+    \begin{eqnarray*}
+        \forall n \in \nat \platz a_{n+1} > a_n
+    \end{eqnarray*}
+    \item monoton fallend
+    \begin{eqnarray*}
+        \forall n \in \nat \platz a_{n+1} \leq a_n
+    \end{eqnarray*}
+    \item streng monoton fallend
+    \begin{eqnarray*}
+        \forall n \in \nat \platz a_{n+1} < a_n
+    \end{eqnarray*}
+\end{itemize} \abstand \abstand
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Konvergenz}\index{Konvergenz}
+\textbf{Definition:\;} Eine Folge $(a_n)_{n \in \nat}$ konvergiert (strebt) gegen den \emph{Grenzwert}\index{Grenzwert (Folgen)} $a$, falls
+$$\forall \varepsilon > 0 \platz \exists n_0 \in \nat \platz \forall n \geq n_0 \platz |a_n - a| < \varepsilon$$
+Schreibweise:
+\begin{eqnarray*}
+    a_n \underset{n \to \infty}{\longrightarrow} a &\text{oder}& a_n \longrightarrow a \\
+    \lim_{n \to \infty} a_n = a &\text{oder}& \lim a_n = a
+\end{eqnarray*} \abstand
+
+\textbf{Satz:\;} Für jede konvergente Folge $(a_n)_{n \in \nat}$ gilt die Eindeutigkeit des Grenzwerts.
+$$ \lim_{n \to \infty} a_n = a \platz \wedge \platz \lim_{n \to \infty} a_n = b \platz \Rightarrow \platz a = b $$
+\textbf{Beweis:}
+\begin{eqnarray*}
+    \varepsilon &:=& \frac{|b-a|}{3} \\
+    \exists n_{0, a} \platz \forall n \geq n_{0, a} & & |a_n - a| < \varepsilon \\
+    \exists n_{0, b} \platz \forall n \geq n_{0, b} & & |a_n - b| < \varepsilon \\
+    n_0 &=& \max (n_{0, a}, n_{0, b}) \\
+    n &>& n_0 \\
+    | a_n - a | < \varepsilon &\wedge& | a_n - b | < \varepsilon \\
+    | a - b | &\leq& | a - a_n | + | a_n - b | \\
+              &<& \varepsilon + \varepsilon \\
+              &\leq& 2 \varepsilon \\
+              &\leq& \frac{2}{3} \cdot | a - b | \\
+    \frac{1}{3} \cdot | a - b | &<& 0 \platz \text{Widerspruch!} \\
+    \Rightarrow \platz a &=& b
+\end{eqnarray*}
+
+\textbf{Satz:\;} Jede konvergente Folge ist beschränkt. \par \abstand
+\textbf{Beweis:}
+$$ \varepsilon := 1 \platz \Rightarrow \platz  \exists n_0 \platz \forall n \geq n_0 | a - a_n | \leq 1$$
+Man wählt:
+$$ K  = \max \{ |a_0|, |a_1|, \ldots |a_{n_0}-1|, |a-1|, |a+1| \} $$
+Dann ist:
+$$ |a_n| \leq K \platz \forall n \in \nat $$
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Nullfolgen und Teilfolgen}
+\textbf{Definition:\;} Eine Folge, die gegen 0 konvergiert, wird \wichtig{Nullfolge} genannt. \par \abstand
+
+\textbf{Definition:\;} Ist $(a_n)_{n \in \nat}$ eine Folge und $0 \leq n_0 < n_1 < n_2 < \ldots$ eine Folge von natürlichen Zahlen, dann wird $(a_{n_i})_{i \in \nat} = a_{n_0}, a_{n_1}, a_{n_2}, \ldots$ eine \wichtig{Teilfolge} von $(a_n)_{n \in \nat}$ genannt. \par \abstand
+
+\textbf{Satz:\;} Wenn $(a_n)_{n \in \nat}$ gegen $a$ konvergiert, dann konvergiert jede Teilfolge von $(a_n)_{n \in \nat}$ gegen $a$. \par \abstand
+
+\textbf{Beispiele:}
+\begin{enumerate}
+    \item Zu zeigen: $a_n = \frac{1}{n}$ ist eine Nullfolge.
+    \begin{itemize}
+        \item $\varepsilon$ ist größer $0$.
+        \item Man sucht eine Zahl $n_0$, so dass für $n \geq n_0$ gilt: $|a_n - 0| < \varepsilon$.
+        \item Man weiß, damit ist $\frac{1}{n} < \varepsilon$.
+        \item Daraus folgt, dass $0 < \frac{1}{n} < \varepsilon$ genau dann, wenn $n > \frac{1}{\varepsilon}$.
+        \item Deswegen setzt man $n_0 := \left\lceil \frac{1}{\varepsilon} \right\rceil$.
+        \item Für alle $n \geq n_0$ gilt dann $n \geq n_0 > \left\lceil \frac{1}{\varepsilon} \right\rceil \geq \frac{1}{\varepsilon}$.
+        \item Daraus folgt: $\frac{1}{n} < \varepsilon$.
+        \item Damit ist $a_n = \frac{1}{n}$ eine Nullfolge: $\underset{n \to \infty}{\lim} \frac{1}{n} = 0 $.
+    \end{itemize}
+    \item Zu zeigen: $b_n = \frac{1}{n^2 + 4n + 5}$ ist eine Nullfolge
+    \begin{itemize}
+        \item $c_n = (n^2 + 4n + 5)_{n \in \nat}$ bildet nur auf Zahlen in $\nat$ ab.
+        \item $c_n$ ist streng monoton wachsend.
+        \item Damit ist $b_n$ streng monoton fallend.
+        \item Daraus folgt: $b_n$ ist eine Teilfolge von $a_n = \frac{1}{n}$.
+        \item Damit ist auch $b_n$ eine Nullfolge: $\underset{n \to \infty}{\lim} \frac{1}{n^2 + 4n + 5} = 0 $.
+    \end{itemize}
+\end{enumerate}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Partialsummenfolge}
+\textbf{Definition:\;} Für eine Folge $(a_n)_{n \in \nat}$ sei $(s_n)_{n \in \nat}$ folgendermaßen definiert:
+$$ s_n = \sum_{i = 0}^n a_i $$
+Man nennt $(s_n)_{n \in \nat}$ die \wichtig{Partialsummenfolge} von $(a_n)_{n \in \nat}$ oder die zu $(a_n)_{n \in \nat}$ gehörende \wichtig{Reihe}. \par \abstand
+Konvergiert $(s_n)_{n \in \nat}$ gegen $S$, dann schreibt man
+$$ \sum_{n = 0}^{\infty} a_n =  \lim_{n \to \infty} s_n = S $$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bestimmte Divergenz}\index{Divergenz, bestimmt}
+\textbf{Definition:\;} Die Folge $(a_n)_{n \in \nat}$ divergiert gegen den \emph{uneigentlichen Grenzwert}\index{Grenzwert, uneigentlicher (Folgen)}~$\pm \infty$ (bestimmte Divergenz), falls
+$$ \forall K \in \real \platz \exists n_0 \platz \forall n \geq n_0 \platz a_0 \gtrless K $$
+
+\textbf{Beispiele:}
+\begin{enumerate}
+    \item[1.] $a_n = c \cdot q^n$
+\end{enumerate}
+\vspace{-0.4cm}
+\begin{align*}
+    \lim_{n \to \infty} a_n &= \left\{ \begin{array}{r@{\platz\text{falls}\platz}ccr@{\platz}c@{\platz}ccc}
+      \text{unbestimmt divergent} & q & \leq & -1 & \text{und} & c & \neq & 0 \\
+      0 & |q| & < & 1 & \text{oder} & c & = & 0 \\
+      c & q & = & 1 & \text{und} & c & \neq & 0 \\
+      \infty & q & > & 1 & \text{und} & c & \neq & 0
+    \end{array} \right. \\
+    \intertext{ \begin{enumerate}
+        \item[2.] $a_n = c + n \cdot d$
+    \end{enumerate} }
+    \lim_{n \to \infty} a_n &= \left\{ \begin{array}{r@{\platz\text{falls}\platz}ccc}
+      c & d & = & 0 \\
+      \infty & d & > & 0 \\
+      -\infty & d & < & 0
+    \end{array} \right.
+\end{align*}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Grenzwertregeln}
+\textbf{Satz:\;} Seien $(a_n)_{n \in \nat}$ und $(b_n)_{n \in \nat}$ kovergente Folgen mit $\underset{n \to \infty}{\lim} a_n = a$ und $\underset{n \to \infty}{\lim} b_n =~b$, dann gilt:
+\begin{itemize}
+    \item $\underset{n \to \infty}{\lim} (a_n + b_n) = a + b$
+    \item $\underset{n \to \infty}{\lim} (a_n \cdot b_n) = a \cdot b$ \hfill (Spezialfall: $\underset{n \to \infty}{\lim} (c \cdot b_n) = c \cdot b$)
+    \item $\underset{n \to \infty}{\lim} \left( \frac{a_n}{b_n} \right) = \frac{a}{b}$ \hfill (falls $b \neq 0$ und $b_n \neq 0$ für $n > n_0$)
+    \item $\underset{n \to \infty}{\lim} |a_n| = |a|$
+    \item $\underset{n \to \infty}{\lim} \sqrt{|a_n|} = \sqrt{|a|} $
+\end{itemize}
+\abstand
+
+\textbf{Beweis:\;} Zu zeigen: $a + b$ ist Grenzwert von $(a_n + b_n)_{n \in \nat}$.
+$$ (a_n + b_n)_{n \in \nat} \platz \Leftrightarrow \platz \forall \varepsilon > 0 \platz \exists n_0 \platz \forall n > n_0 \platz |a_n + b_n - (a + b)| < \varepsilon $$
+Sei $\varepsilon > 0$, dann wählt man $\varepsilon' = \frac{\varepsilon}{2} > 0$ und $n \geq n_0$.
+\begin{eqnarray*}
+    & \exists n_{0, a} \platz \forall n \geq n_{0, a} \platz |a_n - a| < \varepsilon' \\
+    & \exists n_{0, b} \platz \forall n \geq n_{0, b} \platz |b_n - b| < \varepsilon' \\
+    & n_0 = \max (n_{0, a}, n_{0, b})
+\end{eqnarray*}
+\begin{eqnarray*}
+    |a_n + b_n - (a + b)| &=& | a_n - a + b_n -b | \\
+                          &\leq& | a_n - a | + | b_n - b | \\
+                          &<& \varepsilon' + \varepsilon' = \varepsilon
+\end{eqnarray*}
+
+\textbf{Beweis:\;} Zu zeigen: $a \cdot b$ ist Grenzwert von $(a_n \cdot b_n)_{n \in \nat}$
+\begin{eqnarray*}
+    | a_n \cdot b_n - a \cdot b | &=& | a_n \cdot b_n  \underbrace{ - a_n \cdot b + a_n \cdot b }_{0} - a \cdot b | \\
+                                  &\leq& | a_n | \cdot | b_n - b | + | b | \cdot | a_n - a | \\
+                                  &<& \frac{\varepsilon}{2} +  \frac{\varepsilon}{2} = \varepsilon \\ \\
+    \begin{array}{r} \varepsilon' \\ \\ \varepsilon'' \end{array} &
+    \begin{array}{c} = \\ \\ = \end{array} &
+    \left. \begin{array}{c} \frac{\varepsilon}{2 \cdot (|a| + 1)} \\ \\ \frac{\varepsilon}{2 \cdot (|b| + 1)} \end{array} \right\} \text{ für } n > \max(n_{0, b}, n_{0, a})
+\end{eqnarray*}
+\pagebreak
+
+\textbf{Beispiele:}
+\begin{eqnarray*}
+    \underset{n \to \infty}{\lim} \left( \frac{2n+3}{n+1} \right) &=& \underset{n \to \infty}{\lim} \left( \frac{n \cdot \left( 2 + \frac{3}{n} \right) }{ n \cdot \left( 1 + \frac{1}{n} \right) } \right) \\
+                                                                  &=& \frac{ \underset{n \to \infty}{\lim} \left( 2 + \frac{3}{n} \right) }{ \underset{n \to \infty}{\lim} \left( 1 + \frac{1}{n} \right) } \\
+                                                                  &=& \frac{ \underset{n \to \infty}{\lim} 2 + \underset{n \to \infty}{\lim} 3 \cdot \underset{n \to \infty}{\lim} \left( \frac{1}{n} \right) }{ \underset{n \to \infty}{\lim} 1 + \underset{n \to \infty}{\lim} \left( \frac{1}{n} \right) } \\
+                                                                  &=& \frac{2 + 3 \cdot 0}{1 + 0} = 2 \\ \\ \\
+    \underset{n \to \infty}{\lim} \sqrt{ \frac{8n^3 + 5n -18}{36n^3-100n^2} } &=& \sqrt{\underset{n \to \infty}{\lim} \left( \frac{n^3 \cdot \left( 8 + \frac{5}{n^2} - \frac{18}{n^3} \right) }{ n^3 \cdot \left( 36 - 100 \cdot \frac{1}{n} \right) } \right) } \\
+                                                                              &=& \sqrt{\frac{\underset{n \to \infty}{\lim} \left( 8 + \frac{5}{n^2} - \frac{18}{n^3} \right) }{ \underset{n \to \infty}{\lim} \left( 36 - 100 \cdot \frac{1}{n} \right) } } \\
+                                                                              &=& \sqrt{\frac{2}{9}} \\
+                                                                              &=& \frac{\sqrt{2}}{3}
+\end{eqnarray*}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Vergleichskriterium}\index{Vergleichskriterium}
+\textbf{Satz:\;} Seien $(a_n)_{n \in \nat}, (b_n)_{n \in \nat}, (c_n)_{n \in \nat}$ Folgen mit $a_n \leq b_n \leq c_n$ für $n \geq n_0$ und ist $\underset{n \to \infty}{\lim} a_n = \underset{n \to \infty}{\lim} c_n = c$, dann ist auch $\underset{n \to \infty}{\lim} b_n = c$ (wobei $c \in \real \cup \{ \pm \infty \}$). \par \abstand
+
+\textbf{Beispiele:}
+\begin{itemize}
+    \item Zu bestimmen ist der Grenzwert von $a_n = \frac{\sin^2 n}{n}$.
+    \begin{itemize}
+        \item Da $\sin^2 n \leq 1$, ist $0 \leq \frac{\sin^2 n}{n} \leq \frac{1}{n}$.
+        \item Außerdem ist $\underset{n \to \infty}{\lim} 0 = \underset{n \to \infty}{\lim} \left( \frac{1}{n} \right) = 0$.
+        \item Daraus folgt: $\underset{n \to \infty}{\lim} \left( \frac{\sin^2 n}{n} \right) = 0$.
+    \end{itemize}
+    \item Zu zeigen: Der Grenzwert von $a_n = \sqrt[n]{n}$ mit $n \geq 1$ ist $1$.
+    \begin{itemize}
+        \item Sei $b_n = \sqrt[n]{n} - 1$ mit $n \geq 1$.
+        \item Die Folge $b_n$ ist von unten durch $0$ begrenzt.
+        \begin{eqnarray*}
+            (b_n + 1)^n &=& \left( \sqrt[n]{n} -1 + 1 \right)^n = n \\
+            n &=& (1 + b_n)^n = 1 + \begin{pmatrix} n \\ 1 \end{pmatrix} \cdot b_n + \begin{pmatrix} n \\ 2 \end{pmatrix} \cdot b_n^2 + \ldots \\
+            n &\geq& 1 + \begin{pmatrix} n \\ 2 \end{pmatrix} \cdot b_n^2 = 1 + \frac{n(n-1)}{2} \cdot b_n^2 \\
+            (n - 1) &\geq& \frac{n(n-1)}{2} \cdot b_n^2 \\ \\
+            1 &\geq& \frac{n}{2} \cdot b_n^2 \\ \\
+            b_n^2 &\leq& \frac{2}{n} \\
+        \end{eqnarray*}
+        \item Da $b_n^2$ von unten auch durch $0$ begrenzt und von oben durch $\frac{2}{n}$, und die Grenzwerte beide $0$ sind, ist nach dem Vergleichskriterium auch der Grenzwert von $b_n^2$ $0$.
+        \item Der Grenzwert von $b_n$ ist damit auch $0$.
+        \item Da $a_n = b_n + 1$, ist auch $\lim a_n = \lim b_n + 1 = 1$.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Folgerung:\;} Die Limesbildung erhält schwache Ungleichungen, d.h. sind $(a_n)_{n \in \nat}$ und $(b_n)_{n \in \nat}$ konvergent und $a_n \leq b_n$ (für $n \geq n_0$), dann $\underset{n \to \infty}{\lim} a_n \leq \underset{n \to \infty}{\lim} b_n$. \par \abstand
+Achtung: Dies gilt \emph{nicht} für starke Ungleichungen.
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Monotoniekriterium}\index{Monotoniekriterium}
+\textbf{Satz:\;} Jede monoton wachsende (fallende), beschränkte Folge $(a_n)_{n \in \nat}$ ist konvergent. \par \abstand
+\textbf{Beweis:}
+\begin{itemize}
+    \item Ist $(a_n)_{n \in \nat}$ monoton wachsend, dann ist $a = \sup \{ a_n \; | \; n \in \nat \}$ Grenzwert.
+    \item Ist $(a_n)_{n \in \nat}$ monoton fallend, dann ist $a = \inf \{ a_n \; | \; n \in \nat \}$ Grenzwert.
+\end{itemize}
+
+\textbf{Beispiel:}
+\begin{itemize}
+    \item Geometrische Reihe (ohne Monotoniekriterium):
+    \begin{eqnarray}
+        a_n &=& c \cdot q^n \eqname{geometrische Folge} \\
+        s_n &=& \sum_{k=0}^n c \cdot q^n = c \cdot \frac{1-q^{n+1}}{1-q} \hspace{4cm} \eqname{geometrische Reihe} \\
+        \sum_{k=0}^{\infty} a_n &=& \lim_{n \to \infty} s_n \nonumber \\
+                                &=& \lim_{n \to \infty} \left( c \cdot \frac{1-q^{n+1}}{1-q} \right) \nonumber \\ \nonumber \\
+                                &=& c \cdot \frac{1 - \lim_{n \to \infty} q^{n+1}}{1-q} \nonumber \\ \nonumber \\
+                                &=& \left\{ \begin{array}{r@{\platz\text{falls}\platz}rcr}
+                                  \text{divergent} & q & \leq & -1 \\
+                                  \frac{c}{1-q} & |q| & < & 1 \\
+                                  c & q & = & 1 \\
+                                  \infty & q & > & 1
+                                \end{array} \right. \nonumber
+    \end{eqnarray}
+    \pagebreak
+
+    \item Reihe von $\left( \frac{1}{n^2} \right)_{n \in \nat}$:
+    \begin{itemize}
+        \item Bildung der Reihe:
+        \begin{eqnarray*}
+            s_n &=& 1 + \frac{1}{2^2} + \frac{1}{3^2} + \ldots + \frac{1}{n^2} \\
+                &=& \sum_{k=1}^n \frac{1}{k^2}
+        \end{eqnarray*}
+        \item Monotonie:
+        \begin{eqnarray*}
+            s_{n+1} - s_n &=& \sum_{k=1}^{n+1} \frac{1}{k^2} - \sum_{k=1}^n \frac{1}{k^2} \\
+                        &=& \frac{1}{(n+1)^2} \geq 0 \\ \\
+                        &\Rightarrow& s_{n+1} \geq s_n
+        \end{eqnarray*}
+        Damit ist $s_n$ monoton wachsend. \abstand
+        \item Beschränktheit:\; Zu zeigen: $0 \leq a_n \leq 2$
+        \begin{eqnarray}
+            \frac{1}{n^2} &\leq& \frac{1}{n(n-1)} \nonumber \\
+                        &=& \frac{n-n+1}{n(n-1)} \nonumber  \\
+                        &=& \frac{1}{n-1}-\frac{1}{n} \nonumber \\ \nonumber \\ \nonumber \\
+            s_n &\leq& 1 + \left( \frac{1}{1} - \frac{1}{2} \right) + \left( \frac{1}{2} - \frac{1}{3} \right) + \left( \frac{1}{3} - \frac{1}{4} \right) + \ldots + \left( \frac{1}{n-1} - \frac{1}{n} \right) \nonumber \\
+                &=& 2 - \frac{1}{n} \eqname{Teleskopsumme} \\
+                &<& 2 \nonumber
+        \end{eqnarray}
+        Damit ist $s_n$ von oben durch 2 beschränkt. \abstand
+        \item Daraus folgt: $s_n$ ist konvergent. \abstand
+        \item Man kann zeigen:
+        $$ \lim_{n \to \infty} s_n = \frac{\pi^2}{6} $$
+    \end{itemize}
+    \pagebreak
+
+    \item Reihe von $\left( \frac{1}{k!} \right)_{n \in \nat}$:
+    \begin{itemize}
+        \item Bildung der Reihe:
+        \begin{eqnarray*}
+            s_n &=& \sum_{k=0}^n \frac{1}{k!} \\
+                &=& 1 + 1 + \frac{1}{2} + \frac{1}{3!} + \ldots + \frac{1}{n!}
+        \end{eqnarray*}
+        \item Monotonie:
+        \begin{eqnarray*}
+            s_{n+1} - s_n &=& \frac{1}{(n+1)!} \geq 0 \\ \\
+                          &\Rightarrow& s_{n+1} \geq s_n
+        \end{eqnarray*}
+        Damit ist $s_n$ monoton wachsend.
+        \item Beschränktheit:\; Zu zeigen: $0 \leq a_n \leq 3$
+        \begin{eqnarray*}
+            \frac{1}{n!} &\leq& \frac{1}{1 \cdot 2 \cdot 3 \cdot \ldots \cdot n} \leq \frac{1}{2^{n-1}} \\ \\ \\
+            s_n &\leq& 1 + \sum_{k=1}^n \frac{1}{2^{k-1}} \\
+                &=& 1 + \sum_{k=0}^{n-1} \left( \frac{1}{2} \right)^k \\
+                &=& 1 + \frac{1-\left(\frac{1}{2}\right)^n}{1-\frac{1}{2}} \\
+                &<& 1 + \frac{1}{\frac{1}{2}} \leq 3
+        \end{eqnarray*}
+        Damit ist $s_n$ von oben durch 3 beschränkt. \abstand
+    \end{itemize}
+    \textbf{Definition:\;} Die Euler'sche Zahl $e$ ist definiert als
+    $$ e := \lim_{n \to \infty} \left( \sum_{k=0}^n \frac{1}{k!} \right)$$
+    \pagebreak
+
+    \item Folge $c_n = \left( 1 + \frac{1}{n} \right)^n$
+    \begin{itemize}
+        \item Anwenundung:\; $c_n$ ist der Faktor der Verwertung eines Kapitals in einem Jahr bei Zinssatz von $100\%$ und $n$-maliger Aufzinsung.
+        \begin{center}\begin{tabular}{lll}
+            $n=1$ & jährliche Aufzinsung & $c_1 = 2$ \\
+            $n=12$ & monatliches Aufzinsung & $c_{12} = 2,613$ \\
+            $n=365$ & tägliche Aufzinsung & $c_{365} = 2,714$
+        \end{tabular}\end{center}
+        Beoachtung:\; $c_n$ nähert sich mit steigendem $n$ dem Wert von $e$. \par \abstand
+        Ziel:\; Nachweis für $\underset{n \to \infty}{\lim} c_n = e$ \abstand
+        \item Monotonie:
+        \begin{align*}
+            \frac{c_n}{c_{n-1}} &= \frac{\left( 1 + \frac{1}{n} \right)^n}{\left( 1 + \frac{1}{n-1} \right)^{n-1}} \\
+                                &= \frac{\left( n+1 \right)^n \cdot \left( n-1 \right)^{n-1} \cdot \left( n-1 \right) \cdot n }{ n^n \cdot n^{n-1 \cdot \left( n-1 \right) \cdot n } } \\
+                                &= \frac{n}{n-1} \cdot \frac{ \left( n+1 \right)^n \cdot \left( n-1 \right)^n }{ n^{2n} } \\
+                                &= \frac{n}{n-1} \cdot \left( \frac{n^2-1}{n^2} \right)^n  \\
+                                &= \frac{n}{n-1} \cdot \left( 1 - \frac{1}{n^2} \right)^n \\
+                                \intertext{ Anwendung der Bernoulli-Ungleichung: $ (1-a)^n \geq 1 - n \cdot a \platz \text{mit} \platz a = \frac{1}{n^2} $ }
+                                &\geq \frac{n}{n-1} \cdot \left( 1 - \frac{1}{n} \right) \\
+                                &= 1
+        \end{align*}
+        Damit ist $c_n$ monoton wachsend.
+        \pagebreak
+
+        \item Beschränkung:\; Zu zeigen: $c_n \leq e$ für alle $n \in \nat$.
+        \begin{eqnarray*}
+            c_n &=& \left( 1+\frac{1}{n} \right)^n \\
+                &=& \sum_{k=0}^n \left( {n \atop k} \right) \cdot \left( \frac{1}{n} \right)^k \\
+                &\overset{*}{\leq}& \sum_{k=0}^n \frac{1}{k!} \\
+                &\leq& e \\ \\
+            \overset{*}{\Rightarrow} \platz \left( {n \atop k} \right) \cdot \left( \frac{1}{n} \right)^k &=& \frac{n \cdot (n-1) \cdot \ldots \cdot (n-k+1)}{k! \cdot n \cdot n \cdot \ldots \cdot n} \\
+                                                                                                          &\leq& \frac{1}{k!}
+        \end{eqnarray*}
+
+        \item Behauptung:\; $\underset{n \to \infty}{\lim} c_n = e$ \par \abstand
+        $N \geq 1$ beliebig, aber fest ($n > N$):
+        \begin{eqnarray*}
+            c_n &=& \left( 1 + \frac{1}{n} \right)^n \\
+                &=& \sum_{k=0}^n \left( { n \atop k } \right) \cdot \left( \frac{1}{n^k} \right) \\
+                &\geq& \sum_{k=0}^N \left( {n \atop k} \right) \cdot \left( \frac{1}{n^k} \right) \\
+                &=& \sum_{k=0}^N \frac{1}{k!} \cdot 1 \cdot \left( 1 - \frac{1}{n} \right) \cdot \left( 1 - \frac{2}{n} \right) \cdot \ldots \cdot \left( 1 - \frac{k-1}{n} \right) \\
+                &\geq& \sum_{k=0}^N \frac{1}{k!} \cdot \left( 1 - \frac{N}{n} \right)^N
+        \end{eqnarray*}
+        \pagebreak
+
+        \begin{eqnarray*}
+            \lim_{n \to \infty} c_n &\geq& \lim_{n \to \infty} \left( \sum_{k=0}^N \frac{1}{k!} \cdot \left( 1-\frac{N}{n} \right) \right) \\
+                                            &=& \sum_{k=0}^n \frac{1}{k!} \left( \lim_{n \to \infty} \left( 1 - \frac{N}{n} \right) \right)^N \\
+                                            &=& \sum_{k=0}^N \frac{1}{k!}
+        \end{eqnarray*}
+        Vergleichskriterium:
+        \begin{eqnarray*}
+            e & \geq & \lim_{n \to \infty} c_n \geq \sum_{k=0}^N \frac{1}{k!} \\
+            e & \geq & \lim_{n \to \infty} c_n \geq \lim_{N \to \infty} \left( \sum_{k=0}^N \frac{1}{k!} \right) \geq e
+        \end{eqnarray*}
+        Daraus folgt: $\underset{n \to \infty}{\lim} c_n = e$.
+    \end{itemize}
+\end{itemize}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exponentialfunktion als Grenzwert}
+\textbf{Satz:\;} Für jedes $x \in \real$ existiert der Grenzwert
+$$ \exp(x) := \lim_{n \to \infty} \left( 1+\frac{x}{n} \right)^n $$
+
+\begin{itemize}
+    \item Monotonie:\; wie für $\left( 1+\frac{1}{n} \right)^n$ \abstand
+    \item Beschränkheit:\; Man betrachtet zwei Fälle.
+    \begin{enumerate}
+        \item Fall:\; $x \leq 0$ für alle $n > -x$
+        \begin{eqnarray*}
+            0 &\leq& 1 + \frac{x}{n} \\
+              &\leq& 1 \\ \\
+            \Rightarrow \platz 0 &\leq& \left( 1+\frac{x}{n} \right)^n
+        \end{eqnarray*}
+        \item Fall:\; $x>0$
+        \begin{eqnarray*}
+            a_n &:=& \left( 1+\frac{x}{n} \right)^n \\
+            b_n &:=& \left( 1+\frac{-x}{n} \right)^n \hspace{1cm} \text{(1. Fall: $b_n$ ist konvergent)} \\
+            a_n b_n &=& \left( 1+\frac{x}{n} \right)^n \cdot \left( 1-\frac{x}{n} \right)^n \\
+                    &=& \left( 1-\frac{x^2}{n^2} \right)^n \\
+                    &=& \left( 1- \frac{\frac{x^2}{n}}{n} \right)^n \\
+                    &\geq& 1-\frac{x^2}{n} \nonumber \\ \\
+            \Rightarrow \platz a_n b_n &\leq& 1 \hspace{1cm} (n \geq x^2)
+        \end{eqnarray*}
+    \end{enumerate}
+    \pagebreak
+
+    \item Vergleichskriterium:
+    \begin{eqnarray*}
+        \underset{n \to \infty}{\lim} a_n b_n &=& 1 \\ \\
+        a_n &=& \frac{a_n b_n}{b_n} \\ \\
+        \underset{n \to \infty}{\lim} a_n &=& \frac{\underset{n \to \infty}{\lim} a_n b_n}{\underset{n \to \infty}{\lim} b_n} \\ \\
+                                        &=& \frac{1}{\underset{n \to \infty}{\lim} b_n}
+    \end{eqnarray*}
+
+    \item Mit ähnlichen Argumenten kann man zeigen:
+    \begin{itemize}
+        \item Produkt zweier Exponentialfunktionen:
+        $$ \exp(x+y) = \exp(x) \cdot \exp(y) $$
+        \item Euler'sche Zahl:
+        $$ \exp(1) = \lim_{n \to \infty} \left( 1+\frac{1}{n} \right)^n = e $$
+        \item für $x \in \nat$:
+        $$ \exp(x) = e^x $$
+        \item auch für $x \in \ganz$, d.h. für $x = -n$:
+        $$ \exp(x) = \exp(-n) = \frac{1}{e^n} $$
+        \item für $q = \frac{m}{n}$ mit $m \in \ganz$, $n \in \natpos$
+        $$ \exp \left( \frac{m}{n} \right) = \left( \sqrt[n]{e} \right)^m = e^{\frac{m}{n}} $$
+    \end{itemize}
+\end{itemize}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cauchy-Kriterium}\index{Cauchy-Kriterium}
+\textbf{Satz:\;} Eine Folge $(a_n)_{n \in \nat}$ ist genau dann konvergent, wenn
+$$ \forall \varepsilon > 0 \platz \exists n_0 \in \nat \platz \forall n,m \geq n_0 \platz |a_n - a_m| < \varepsilon $$
+
+\textbf{Anwendung:\;}
+\begin{itemize}
+    \item Die harmonische Reihe $s_n$ ist \emph{nicht} kovergent.
+    \begin{eqnarray*}
+        s_n &=& \sum_{k=1}^n \frac{1}{k} \\
+            &=& \underbrace{\frac{1}{1}} + \underbrace{\frac{1}{2}} + \underbrace{\frac{1}{3} + \frac{1}{4}} + \underbrace{\frac{1}{5} + \ldots + \frac{1}{8}} + \underbrace{\frac{1}{9} + \ldots + \frac{1}{16}} + \ldots + \frac{1}{n} \\
+            &\geq& 1 + \frac{1}{2} + \underbrace{\frac{1}{4} + \frac{1}{4}} + \underbrace{\frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8}} + \underbrace{8 \cdot \frac{1}{16}} + \ldots + \frac{1}{n} \\
+            &\geq& 1 + \underbrace{\frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \ldots + \frac{1}{2}}_{\left\lfloor \log_2 n \right\rfloor} \\
+            &=& 1 + \frac{1}{2} \left\lfloor \log_2n \right\rfloor
+    \end{eqnarray*}
+    Das heißt, $s_n$ ist nicht beschränkt.
+    \item Die alteriende harmonische Reihe $s_n$ ist konvergent.
+    $$ s_n = \sum_{k=1}^n \frac{(-1)^{k+1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \ldots + \frac{(-1)^{n+1}}{n} $$
+    Sei $\varepsilon > 0$ und $n_0 := \left\lceil \frac{1}{\varepsilon} \right\rceil$ mit $n, m \geq n_0$ und ohne Beschränkung der Allgemeinheit $m > n$.
+    \begin{eqnarray*}
+        |a_m - a_n| &=& \left| \frac{(-1)^{n+2}}{n+1} + \frac{(-1)^{n+3}}{n+2} + \ldots + \frac{(-1)^{m+1}}{m} \right| \\ \\
+                    &\leq& \frac{1}{n+1} \\ \\
+                    &<& \varepsilon
+    \end{eqnarray*}
+\end{itemize}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Polynome und rationale Funktionen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Polynome und rationale Funktionen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Polynome}
+\textbf{Definition:\;} Ein \wichtig{Polynom} über einen kommutativen Ring $R$ ist ein formaler Ausdruck der Form
+$$ \sum_{k=0}^n a_k x^k $$
+wobei $a_k \in R$ und $a_n \neq 0$. Der Rang dieses Polynoms ist $n$. \par \abstand
+Jedes Polynom bestimmt eine Funktion $R \rightarrow R$ durch Einsetzen von Werten für~$x$. \par \abstand
+Die Polynome
+$$ p(x) = \sum_{k=1}^n a_k x^k \platz \text{und} \platz q(x) = \sum_{k=1}^m b_k x^k $$
+sind (syntaktisch) gleich (als formaler Ausdrücke), falls $n=m$ und $a_k=b_k$ für $k=0, \ldots n$ \par \abstand
+
+\textbf{Satz:\;} Für Polynome über $\real$ (und über $\rat$ und $\comp$) gilt: $p(x)$ und $q(x)$ sind syntaktisch gleich, wenn die zugehörigen Polynomfunktion semanisch gleich sind.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Horner-Schema}
+Funktionswertbestimmung durch das \wichtig{Horner-Schema}:
+\begin{eqnarray}
+    f(x) &=& \sum_{k=0}^n a_k x^k \eqname{$2n$ Multiplikationen und $n$ Additionen} \\ \nonumber \\
+         &=& a_n x^k + a_{n-1} x^{n-1} + \ldots + a_2 x^2 + a_1 x + a_0 \nonumber \\
+         &=& \underbrace{ \underbrace{(\underbrace{(\underbrace{(\underbrace{(\underbrace{a_n}_{c_n} x + a_{n-1})}_{c_{n-1}} \cdot x \ldots a_3)}_{c_3} \cdot x + a_2)}_{c_2} \cdot x + a_1)}_{c_1} \cdot x + a_0}_{c_0} \nonumber \\
+         & & \eqname{$n$ Multiplikationen und $n$ Additionen}
+\end{eqnarray}
+
+\textbf{Allgemeiner Lösungsweg:}
+$$ \begin{array}{r|c|c|c|cc|c|c}
+  f(x) =  & a_n & a_{n-1} & a_{n-1} & \multicolumn{2}{|c|}{\ldots} & a_1 & a_0 \\ \hline
+    &     &             &                 & & &             & \\
+  + &     & c_n \cdot x & c_{n-1} \cdot x & & & c_2 \cdot x & c_1 \cdot x \\ \hline
+    & c_n & c_{n-1} & c_{n-2} & & c_2 & c_1 & c_0
+\end{array} $$
+Der Wert von $c_0$ ist der Funktionswert von $f(x)$. \par \abstand
+
+\textbf{Beispiel:\;} Bestimme $f(3)$ von $f(x) = 2x^4 - 4x^3 + 3x + 10$.
+$$ \begin{array}{r|r|r|r|r|r}
+  f(3) =  & 2 & -4 & 0 & 3 & 10 \\ \hline
+    &     &   &   &    & \\
+  + &     & 6 & 6 & 18 & 63 \\ \hline
+    & 2 & 2 & 6 & 21 & 73
+\end{array} $$
+Damit ist $f(3) = 73$. \par \abstand \abstand \abstand
+
+\textbf{Satz:\;} Sei $f(x)$ das Polynom
+$$ f(x) = \sum_{k=0}^n a_k x^k $$
+mit $a_n \neq 0$, $n \geq 1$, $x_0 \in \real$, dann gilt:
+$$ \begin{array}{rcl}
+  c_n &=& a_n \\
+  c_{n-1} &=& c_n \cdot b + a_{n-1} \\
+  &\vdots& \\
+  c_0 &=& c_1 \cdot b + a_0 \\ \\
+  c_0 &=& f(x) \\ \\
+  f(x_0) &=& (x-x_0) \cdot (c_n x^{n-1} + \ldots + c_2 x + c_1) + c_0
+\end{array} $$
+Koeffizientenvergleich bei $f(x_0)$ und $(x-x_0) \cdot (c_n x^{n-1} + \ldots + c_2 x + c_1) + c_0$ für~$x^k$
+\begin{itemize}
+    \item links: $a_k$
+    \item rechts: $a_n - b \cdot c_{k+1} = b \cdot c_{k+1} + a_k - b \cdot c_{k+1} = a_k$.
+\end{itemize}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Nullstellen}
+\textbf{Definition:\;} $x_0 \in \real$ ist Nullstelle von $f(x)$, falls $f(x_0)=0$. \par \abstand
+\textbf{Satz:\;} Ist $x_0$ Nullstelle von $f(x)$, dann existiert ein Polynom $g(x)$:
+$$ f(x) = (x-x_0) \cdot g(x) $$
+\textbf{Beweis:\;} folgt aus der Anwendung des Horner-Schemas. \par \abstand
+\textbf{Definition:\;} $x_0$ ist $k$-fache Nullstelle des Polynoms $f(x)$, falls ein Polynom $g(x)$ existiert:
+$$ f(x) = (x-x_0)^k \cdot g(x) $$
+
+\textbf{Satz:\;} Jedes reele Polynom $f(x)$ kann folgendermaßen zerlegt werden:
+$$ \sum_{k=0}^n a_k x^k = a_n \cdot \prod_{i=1}^l (x - b_i)^{k_i} \cdot \prod_{i=1}^m (x^2 + c_i x + d_i) $$
+\begin{itemize}
+    \item $k_1 + k_2 + \ldots + k_l + 2m = n$ ist Grad des Polynoms.
+    \item $b_1, b_2, \ldots b_l$ sind $k_1, k_2, \ldots, k_l$-fache reelen Nullstellen von $f(x)$.
+    \item Die Polynome $x^2 + c_i \cdot x + d_i$ haben keine reelen Nullstellen.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Rationale Funktionen}\index{rationale Funktion}\index{Funktion, rationale}
+\textbf{Definitionen:}
+\begin{itemize}
+    \item Eine \wichtig{ganz rationale Funktion} ist ein Poylnom.
+    \item Eine \emph{(gebrochen) rationale Funktion}\index{gebrochen rationale Funktion} ist ein Quotient aus zwei Polynomen~$\frac{f(x)}{g(x)}$.
+    \item Eine \wichtig{echt gebrochen rationale Funktion} ist ein Quotient von zwei Polynomen~$\frac{f(x)}{g(x)}$ mit $\text{Grad}(f(x))$ $<$ $\text{Grad}(g(x))$.
+\end{itemize}
+
+\textbf{Satz:\;} Jede rationale Funktion $\frac{p(x)}{q(x)}$ mit $\text{Grad}(p(x)) \geq \text{Grad}(q(x))$ lässt sich darstellen in der Form
+$$ \frac{p(x)}{q(x)} = h(x) + \frac{r(x)}{q(x)} $$
+wobei $h(x)$ ganz rational und $\frac{r(x)}{q(x)}$ echt gebrochen rational ist.
+\pagebreak
+
+\textbf{Beweis:} \par \abstand
+Bemerkung: Dieser Beweis zeigt, warum \wichtig{Polynomdivision} überhaupt funktioniert. \par \abstand
+Es seien die Polynome $p(x)$ und $q(x)$ gegeben:
+\begin{eqnarray*}
+    p(x) &=& \sum_{k=0}^n a_k x^k \\
+    q(x) &=& \sum_{k=0}^m b_k x^k \platz \platz \platz \text{(mit $n \geq m$)}
+\end{eqnarray*}
+\begin{itemize}
+    \item Induktion nach $d = n-m$
+    \item Induktionsanfang: $d=0$, d.h. $n=m$ \par
+    $$ p_1(x) = p(x) - \frac{a_n}{b_n} \cdot q(x) $$
+    Behauptung: $\text{Grad}(p_1(x)) < n$ \par
+    Koeffizient von $x^n$: $a_n - \frac{a_n}{b_n} \cdot b_n = 0$
+    $$ \frac{p(x)}{q(x)} = \frac{a_n}{b_n} \cdot \frac{q(x)}{q(x)} + \frac{p_1(x)}{q(x)} $$
+    Damit ist $p_1(x) = r(x)$ und $\frac{a_n}{b_n} = h(x)$ aus dem Satz.
+    \item Induktionsschritt $d \rightarrow d+1$ \par
+    Sei $n = m + d + 1$
+    $$ \frac{p(x)}{q(x)} = \frac{a_n}{b_m} \cdot x^{n-m} + \frac{p_1(x)}{q(x)} = \frac{a_n}{b_m} \cdot \frac{x^{n-m} \cdot q(x)}{q(x)} + \frac{p_1(x)}{q(x)} $$
+    wobei
+    $$ p_1(x) = p(x) - \frac{a_n}{b_m} \cdot x^{n-m} \cdot q(x)$$
+    Behauptung: $\text{Grad}(p_1(x)) < n$ \par
+    Koeffizient von $x^n$: $a_n - \frac{a_n}{b_m} \cdot b_m = 0$ \par
+    Da $\text{Grad}(p_1(x)) - \text{Grad}(g(x)) < n-m \leq d$), kann auf $\frac{p_1(x)}{q(x)}$ Induktion angewendet werden.
+    $$ \frac{p(x)}{q(x)} = \underbrace{\frac{a_n}{b_m} \cdot x^{n-m} + b_1(x)}_{h(x)} + \frac{r(x)}{q(x)} $$
+\end{itemize}
+\pagebreak
+
+\textbf{Euklidischer Algorithmus:}
+\begin{verbatim}
+// Grad von p(x) >= Grad von q(x)
+procedure ggT(p(x), q(x) : Menge der Polynome über real)
+    s(x) = p(x)
+    t(x) = q(x)
+    while (t(x) != 0)
+      r(x) = Rest von s(x) / t(x)
+      s(x) = t(x)
+      t(x) = r(x)
+\end{verbatim}
+\abstand \abstand
+
+\textbf{Definition (ggT)\index{ggT}:\;} Seien $p(x)$ und $q(x)$ Polynome, dann ist der \wichtig{größte gemeinsame Teiler} $\text{ggT}(p(x), q(x))$ ein Polynom $d(x)$ maximalen Grades, so dass
+$$ p(x) = d(x) \cdot h(x) \platz \text{und} \platz g(x) = d(x) \cdot g(x) $$
+und der führende Koeffizent von $d(x)$ gleich 1 ist. \par \abstand
+\textbf{Achtung:\;} Bei der Bestimmung der Definitionsbereichs von rationalen Funktionen\index{Definitionsbereich von rationalen Funktionen} $\frac{p(x)}{q(x)}$ wird vorausgesetzt, dass $\text{ggT}(p(x), q(x)) = 1$ \par \abstand
+Beispiel: $\frac{x^2-1}{x-1} = \frac{x+1}{1}$ ist definiert auf ganz $\real$. \par \abstand \abstand \abstand
+
+\textbf{Definition (Polstelle)\index{Polstelle}:\;} Ist $\text{ggT}(p(x), q(x)) = 1$ und ist $b$ eine $k$-fache Nullstelle von $q(x)$, dann nennt man $b$ einen $k$-fache \emph{Pol} der rationalen Funktion $\frac{p(x)}{q(x)}$.
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Grenzwerte und Stetigkeit von Funktionen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Grenzwerte und Stetigkeit von Funktionen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Definition der Grenzwerte}
+\textbf{Definition:\;} Es seien
+\begin{itemize}
+    \item $I \subseteq \real$ ein Intervall
+    \item $a \in I$ bzw. $a \in \{ \pm \infty \}$
+    \item $f : I \backslash \{a\} \rightarrow \real$ bzw. $f : I \rightarrow \real$ (falls $a \in \{ \pm \infty \}$) eine Funktion
+\end{itemize}
+Dann gilt:
+\begin{itemize}
+    \item Die Funktion $f$ hat in $a$ den \emph{Grenzwert}\index{Grenzwert (Funktionen)} $c$, falls für jede Folge $x_n \in I$ mit dem Grenzwert $a$ gilt:
+    $$ \lim_{n \to \infty} f(x_n) = c $$
+    \item Die Funktion $f$ hat in $a$ den \emph{linksseitigen Grenzwert} $c$, falls für jede Folge $x_n \in I$ mit dem Grenzwert $a$ gilt:
+    $$ \lim_{n \to \infty} f(x_n) = c \platz \text{und} \platz x_n < a$$
+    \item Die Funktion $f$ hat in $a$ den \emph{rechtsseitigen Grenzwert} $c$, falls für jede Folge $x_n \in I$ mit dem Grenzwert $a$ gilt:
+    $$ \lim_{n \to \infty} f(x_n) = c \platz \text{und} \platz x_n > a$$
+\end{itemize}
+Schreibweise:
+\begin{itemize}
+    \item $\underset{x \to a}{\lim} f(x) = c$
+    \item $\underset{x \to a-}{\lim} f(x) = c$ \platz (linksseitiger Grenzwert)
+    \item $\underset{x \to a+}{\lim} f(x) = c$ \platz (rechtsseitiger Grenzwert)
+\end{itemize}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Asymptoten}
+\textbf{Definition:\;} Asymptoten einer Funktion (Kurve) $y = f(x)$ sind Geraden der folgenden Form:
+\begin{enumerate}
+    \willbuch
+    \item Vertikale Asymptote:
+    $$ x = a $$
+    mit $\underset{x \to a-}{\lim} f(x) = \pm \infty$ oder $\underset{x \to a+}{\lim} f(x) = \pm \infty$
+    \item Horizontale Asymptote:
+    $$ y = c $$
+    mit $\underset{x \to \infty}{\lim} f(x)=c$ oder $\underset{x \to -\infty}{\lim} f(x)=c$
+    \item Schräge Asymptote:
+    $$ y = ax + b $$
+    mit $a \neq 0$ und $\underset{x \to \infty}{\lim} (f(x) - ax - b) = 0$ oder $\underset{x \to -\infty}{\lim} (f(x) - ax - b) = 0$
+\end{enumerate}
+
+\textbf{Beispiel:\;} Sei $f(x)$ eine rationale Funktion mit $\text{ggT}(p(x), q(x)) = 1$:
+$$ f(x) = \frac{p(x)}{q(x)} $$
+\begin{enumerate}
+    \willbuch
+    \item Ist $b$ eine Polstelle von $f(x)$, dann ist $x=b$ vertikale Asymptote.
+    \begin{itemize}
+        \item Wenn $b$ ein $k$-facher Pol und $k$ \emph{gerade}, dann sind rechtsseitiger und linksseitiger Grenzwert \emph{gleich}.
+        \item Wenn $b$ ein $k$-facher Pol und $k$ \emph{ungerade}, dann haben rechtsseitiger und linksseitiger Grenzwert \emph{entgegengesetztes Vorzeichen}.
+    \end{itemize}
+    \item Sei $n=\text{Grad}(p(x))$ und $m=\text{Grad}(q(x))$
+    \begin{itemize}
+        \item Ist $m>n$, dann ist $y=0$ eine horizontale Asymptote von $f(x)$.
+        \item Ist $m=n$, dann ist $y = \frac{a_n}{b_m}$ eine horizontale Asymptote von $f(x)$.
+    \end{itemize}
+    \pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ist noch nicht vernünftig durchgerechnet -->
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Ist $n=m+1$, dann ist $y$ folgende schräge Asymptote von $f(x)$.
+    $$ y = \frac{a_n}{b_n} \cdot x + \frac{b_{n-1} \cdot a_{n-1} - a_n \cdot b_{n-2}}{b_{n-1}^2} $$
+    Zu zeigen:
+    $$ \lim_{x \to \infty} \left( \frac{p(x)}{q(x)} - \frac{a_n}{b_{n-1}} \cdot x \right) = 0 $$
+    mit:
+    \begin{eqnarray*}
+        \begin{array}{c} p(x) \\ q(x) \end{array} & \begin{array}{c} = \\ = \end{array} &
+        \begin{array}{ccccccc}
+        a_n x^n & + & a_{n-1} x^{n-1} & + & \ldots & + & a_0 \\
+                &   & b_{n-1} x^{n-1} & + & \ldots & + & b_0
+        \end{array}
+    \end{eqnarray*}
+    Beweis:
+    \begin{eqnarray*}
+        & & \lim_{x \to \infty} \left( \frac{p(x)}{q(x)} - \frac{a_n}{b_{n-1}} \cdot x \right) \\
+        &=& \lim_{x \to \infty} \left( \frac{a_n x^n + a_{n-1} x^{n-1} + \ldots + a_0}{b_{n-1} x^{n-1} + \ldots + b_0} - \frac{a_n \cdot x}{b_{n-1}} \right) \\
+        &=& \lim_{x \to \infty} \left( \frac{x^n}{x^{n-1}} \cdot \frac{a_n + \frac{a_{n-1}}{x} + \ldots + \frac{a_0}{x^n} }{b_{n-1} + \frac{b_{n-2}}{x} + \ldots + \frac{b_0}{x^{n-1}} } - \frac{a_n \cdot x}{b_{n-1}} \right) \\
+        &=& \lim_{x \to \infty} \frac{x \cdot b_{n-1} \cdot \left( a_n + \frac{a_{n-1}}{x} + \ldots + \frac{a_0}{x^n} \right) - a_n \cdot x \cdot \left( b_{n-1} + \frac{b_{n-2}}{x} + \ldots + \frac{b_0}{x^{n-1}} \right) }{ b_{n-1} \cdot \left( b_{n-1} + \ldots + \frac{b_0}{x^{n-1}} \right) } \\
+        &=& \lim_{x \to \infty} \frac{b_{n-1} \cdot a_{n-1} - a_n \cdot b_{n-2} + \frac{1}{x} \cdot \left( \ldots \right) }{ b_{n-1} \cdot \left( b_{n-1} + \frac{b_{n-2}}{x} + \ldots + \frac{b_0}{x^{n-1}} \right) }
+    \end{eqnarray*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% <-- ist noch nicht vernünftig durchgerechnet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{enumerate}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Grenzwertregeln}\index{Grenzwertregeln}
+\textbf{Satz:\;} Aus $\underset{x \to a}{\lim} f(x) = c$ und $\underset{x \to a}{\lim} g(x) = d$ folgt
+\begin{itemize}
+    \item $\underset{x \to a}{\lim} (f(x) \pm g(x)) = c \pm d$
+    \item $\underset{x \to a}{\lim} (f(x) \cdot g(x)) = c \cdot d$ \hfill (Spezialfall: $\underset{x \to a}{\lim} (b \cdot f(x)) = b \cdot d$ für $b \in \real$)
+    \item $\underset{x \to a}{\lim} \frac{f(x)}{g(x)} = \frac{c}{d}$ \hfill (falls $d \neq 0$)
+\end{itemize} \abstand
+
+\textbf{Beispiele:\;} Umformung von Termen
+\begin{eqnarray*}
+    \lim_{x \to 1} \frac{x^n-1}{x-1} &=& \lim_{x \to 1} \frac{(x-1) \cdot (x^{n-1} + x^{x-2} + \ldots + x + 1)}{x-1} \\
+    &=& \lim_{x \to 1} x^{n-1} + \lim_{x \to 1} x^{n-2} + \ldots + \lim_{x \to 1} x + \lim_{x \to 1} 1 \\ \\
+    &=& n \\ \\
+    \lim_{x \to 0} \frac{\sqrt{x+1} - 1}{x} &=& \lim_{x \to 0} \frac{\left( \sqrt{x+1} - 1 \right) \cdot \left( \sqrt{x+1} + 1 \right)}{x \cdot \sqrt{x+1} + 1} \\
+    &=& \lim_{x \to 0} \frac{x+1-1}{x \cdot \sqrt{x+1}-1} \\
+    &=& \lim_{x \to 0} \frac{x}{x \cdot \sqrt{x+1}-1} \\
+    &=& \lim_{x \to 0} \frac{1}{\sqrt{x+1}-1} \\
+    &=& \frac{1}{2}
+\end{eqnarray*}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Vergleichskriterium}\index{Vergleichskriterium}
+\textbf{Satz:\;} Seien $f$, $g$ und $h$ Funktionen mit
+$$ g(x) \leq f(x) \leq h(x) \platz \text{für alle $x \in I$} $$
+und $a \in I$, so dass
+$$ \lim_{x \to a} g(x) = \lim_{x \to a} h(x) = c $$
+dann ist auch
+$$ \lim_{x \to a} f(x) = c $$
+
+\textbf{Beispiel:\;}
+\begin{center}
+    \includegraphics{skript/grafiken/vergleichkreissektor}
+\end{center}
+\begin{itemize}
+    \item Aus der Grafik sieht man:
+    $$ \underbrace{\frac{\cos x \cdot \sin x}{2}}_{\text{kleines Dreieck}} \leq \frac{x \cdot \pi}{2 \pi} \leq \underbrace{\frac{1 \cdot \tan x}{2}}_{\text{großes Dreieck}} $$
+    Daraus folgt:
+    $$ \cos x \leq \frac{x}{\sin x} \leq \frac{1}{\cos x} $$
+    Nun kann den Limes für die beiden äußeren Werte bestimmen:
+    $$ \lim_{x \to 0+} \cos x = 1 = \lim_{x \to 0+} \frac{1}{\cos x} $$
+    Damit folgt aus dem Vergleichskriterium:
+    $$ \lim_{x \to 0-} \frac{x}{\sin x} = \lim_{x \to 0+} \frac{-x}{\sin (-x)} = \lim_{x \to 0+} \frac{x}{\sin x} = 1 $$
+    Nun muss nur noch der Kehrwert betrachtet werden:
+    $$ \lim_{x \to 0} \frac{\sin x}{x} = \frac{1}{\underset{x \to 0}{\lim} \frac{x}{\sin x}} = 1 $$
+\end{itemize}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Stetigkeit}\index{Stetigkeit}
+\textbf{Definition:\;} Es sei $I \subseteq \real$ ein Intervall und $f : I \rightarrow \real$ eine Funktion. \par \abstand
+Die Funktion $f$ heißt \emph{stetig} in $x_0 \in I$, wenn
+$$ \lim_{x \to x_0} f(x) = f(x_0) $$
+(wenn $x_0$ Rand von $I$, dann nur einseitiger Limes) \par \abstand
+
+\textbf{Satz:\;} $f$ ist stetig in $x_0$ genau dann, wenn
+$$ \forall \varepsilon > 0 \platz \exists \delta > 0 \platz \forall x \in I \platz (|x-x_0| < \delta \Rightarrow |f(x)-f(x_0)| < \varepsilon) $$
+
+\textbf{Beweis ($\Leftarrow$):}
+\begin{itemize}
+    \item Zu zeigen ist: Für jede Folge $(a_n)_{n \in \nat} \rightarrow x_0$ ist $\underset{n \to \infty}{\lim} f(a_n) = f(x_0)$.
+    \item Das heißt: $\forall \varepsilon > 0 \platz \exists n_0 \platz \forall n \geq n_0 \platz |f(a_n) - f(x_0)| < \varepsilon$.
+    \item Man betrachtet $\delta > 0$ für das gegebene $\varepsilon$, da für $\underset{n \to \infty}{\lim} a_n = x_0$
+    $$ \exists n_0 \platz \forall n \geq n_0 \platz |a_n - x_0| < \delta $$
+    \item Behauptung:\; Dieses $n_0$ ist das gesuchte $n_0$.
+    \item Sei $n \geq n_0$, dann gilt
+    $$ |a_n - x_0| < \delta $$
+    und nach Voraussetzung
+    $$ |f(a_n) - f(x_0)| < \varepsilon $$
+\end{itemize}
+\pagebreak
+
+\textbf{Beweis (indirekt, $\Rightarrow$):} Angenommen
+$$ \exists \varepsilon > 0 \platz \forall \delta > 0 \platz \exists x \in I \platz (|x-x_0| < \delta \text{ und } |f(x) - f(x_0)|\geq \varepsilon) $$
+dann konstruiert man eine Folge $(a_n)_{n \in \natpos}$, so dass
+$$ \lim_{n \to \infty} a_n = x_0 \platz \text{aber} \platz \lim_{n \to \infty} f(a_n) \neq f(x_0) $$
+\begin{eqnarray*}
+    a_1 &:& \text{Setze } \delta = 1 \platz \exists \underset{\uparrow \atop a_1}{x} \in I \platz (|x - x_0| < \delta \text{ und } |f(x) - f(x_0)| \geq \varepsilon) \\
+    a_n &:& \text{Setze } \delta = \frac{1}{n} \platz \exists \underset{\uparrow \atop a_n}{x} \in I \platz (|x - x_0| < \delta \text{ und } |f(x) - f(x_0)| \geq \varepsilon) \\
+\end{eqnarray*}
+Damit ist $\underset{n \to x_0}{\lim} a_n = x_0$ (da $|a_n - x_0| < \frac{1}{n}$), aber $|f(a_n) - f(x_0)| \geq \varepsilon$ für alle $n \in \nat$. \par \abstand
+Daraus folgt: $f$ nicht stetig in $x_0$. \par \abstand \abstand
+
+\textbf{Bemerkung:\;} Ist $f$ in $x_0$ nicht definiert, aber $\lim_{x \to x_0} f(x) \in \real$ existiert, dann kann man die Definition von $f$ auf $x_0$ erweitern durch $f(x_0) := \lim_{x \to x_0} f(x)$ ($f$ ist dann stetig in $x_0$). \par \abstand \abstand
+
+\textbf{Beispiele:}
+\begin{enumerate}
+    \willbuch
+    \item Rationale Funktionen schon per Definition stetig
+    $$ f(x) = \frac{x^2 - 1}{x - 1} = \frac{(x-1) \cdot (x+1)}{x-1} = x+1 $$
+    Damit ist $f(1) = 2$.
+    \item $g(x) = \frac{\sin x}{x}$ ist auf $\real \backslash \{ 0 \}$ definiert.
+    $$ g(0) := 1 $$
+    \item $h(x) = \frac{\sqrt{x^2+1} - 1}{x^2}$ ist auf $\real \backslash \{ 0 \}$ definiert.
+    $$ \lim_{x \to 0} \frac{\sqrt{x^2+1} - 1}{x^2} = \frac{1}{2} $$
+    $$ h(0) := \frac{1}{2} $$
+\end{enumerate}
+\pagebreak
+
+\textbf{Satz:\;} Sind $f$ und $g$ stetig auf $I$, dann sind auch
+\begin{itemize}
+    \item $f + g$, $f - g$ und $f \cdot g$ stetig auf $I$
+    \item $\frac{f}{g}$ stetig in allen $x_0$, für die $g(x_0) \neq 0$
+\end{itemize} \abstand
+
+\textbf{Satz:\;} Wenn
+\begin{itemize}
+    \item die Funktion $f : I \rightarrow \real$ stetig auf $I$ ist,
+    \item die Funktion $g : D \rightarrow \real$ stetig auf $D$ ist und
+    \item das Bild $g(D) \subseteq I$ ist
+\end{itemize}
+dann ist $h(x) := f(g(x))$ stetig auf $D$. \par \abstand \abstand
+
+\textbf{Folgerungen:}
+\begin{itemize}
+    \item Polynome sind auf $\real$ stetig.
+    \item Rationale Funktionen $\frac{p(x)}{q(x)}$ mit $\text{ggT}(p(x), q(x)) = 1$ sind stetig in allen $x \in \real$ mit $q(x) \neq 0$.
+\end{itemize} \abstand
+
+\textbf{Satz:\;} Für jede auf einem \emph{abgeschlossenen} Intervall $[a, b]$ stetige Funktion $f$ gilt:
+\begin{itemize}
+    \item Schrankensatz:
+    $$ \exists K \in \real \platz \forall x \in [a, b] \platz |f(x)| < K $$
+    \item Satz vom Minimum und Maximum:
+    $$ \exists x_0, x_1 \in [a, b] \platz \forall x \in [a, b] \platz f(x_0) \leq f(x) \leq f(x_1)$$
+    \item Zwischenwertsatz:
+    $$ \forall c \platz f(x_0) \leq c \leq f(x_1) \platz \exists x \in [a, b] \platz f(x) = c $$
+    \item Gleichmäßige Stetigkeit:
+    $$ \forall \varepsilon > 0 \platz \exists \delta > 0 \platz \forall x, x' \in [a, b] \platz (|x - x'| < \delta \Rightarrow |f(x) - f(x')| < \varepsilon ) $$
+\end{itemize}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Asymptotische Schranken (O-Notation)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Asymptotische Schranken ($\bigO$-Notation)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Laufzeit}
+\textbf{Anwendungen:\;} Laufzeitanalyse von Algorithmen \par \abstand
+
+\textbf{Definition:\;} Die \wichtig{Laufzeit} $T(n)$ eines Algorithmus ist die maximale Anzahl der Schritte bei Eingaben der Länge $n$. \par \abstand
+
+\textbf{Beispiele:\;} $c_i$ ist eine Konstante, die modell- und implementierungsabhängig ist:
+\begin{itemize}
+    \item Binärsuche: \par
+    $T_1(n) = c_1 \lceil \log_2 n \rceil$ \par
+    \item Quicksort: \par
+    $T_2(n) = c_2 \cdot n^2$
+    \item Mergesort: \par
+    $T_3(n) = c_3 \cdot n \cdot \lceil \log_2 n \rceil$
+\end{itemize}
+
+\textbf{Vergleich:\;} $T_2 = 3n^2$ und $T_3 = 100 \cdot n \cdot \log_2 n$
+\begin{center}
+    \includegraphics{skript/grafiken/onotation}
+\end{center}
+$$ \begin{array}{c|c|c|c|c}
+  n & 3n^2 & \text{Zeit in $s$ bei 1 GHz} & 100n \cdot \lceil \log_2 n \rceil & \text{Zeit in $s$ bei 1 GHz} \\ \hline
+  2 & 12 & 0,012 \text{ $\mu$s} & 200 & 0,2 \text{ $\mu$s} \\
+  4 & 48 & 0,048 \text{ $\mu$s} & 800 & 0,8 \text{ $\mu$s} \\
+  10^3 & 3 \cdot 10^6 & 3 \text{ ms} & \approx 10^6 & 1 \text{ ms} \\
+  10^6 & 3 \cdot 10^{12} & 3000 s \approx 0,833 \text{ h} & \approx 2 \cdot 10^9 & 2 \text{ s} \\
+  10^9 & 3 \cdot 10^{18} & 3 \cdot 10^9 \text{ s} \approx 100 \text{ Jahre} & \approx 3 \cdot 10^{12} & 3000 \text{ s} \approx 0,833 \text{ h}
+\end{array} $$
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Asymptotische Schranken}
+\textbf{Definition:\;} $g(n)$ ist \wichtig{asymptotische obere Schranke} von $f(n)$, falls
+\begin{itemize}
+    \item eine Konstante $c > 0$  und
+    \item ein $n_0 \in \nat$
+\end{itemize}
+existieren, so dass für alle $n \geq n_0$ gilt:
+$$ f(n) \leq c \cdot g(n) $$
+Schreibweise:
+$$ f(n) = \bigO(g(n)) $$
+\abstand
+
+\textbf{Definition:\;} Seien $f$ und $g$ Funktionen $\nat \rightarrow \realpos$.
+\begin{itemize}
+    \item Obere Schranke:
+    $$ \bigO(g(n)) = \{ f(n) \platz | \platz \exists c > 0 \platz \exists n_0 \platz \forall n \geq n_0 \platz f(n) \leq c \cdot g(n) \} $$
+    \item Untere Schranke:
+    $$ \Omega(g(n)) = \{ f(n) \platz | \platz \exists c > 0 \platz \exists n_0 \platz \forall n \geq n_0 \platz c \cdot g(n) \leq f(n) \} $$
+    \item Wachstum
+    $$ \Theta(g(n)) = \bigO(g(n) \cap \Omega(g(n))) $$
+    \item Starke obere Schranke:
+    $$ o(g(n)) = \{ f(n) \platz | \platz \forall c > 0 \platz \exists n_0 \platz \forall n \geq n_0 \platz f(n) \leq c \cdot g(n) \} $$
+    \item Starke untere Schranke:
+    $$ \omega(g(n)) = \{ f(n) \platz | \platz \forall c > 0 \platz \exists n_0 \platz \forall n \geq n_0 \platz c \cdot g(n) \leq f(n) \} $$
+\end{itemize}
+
+\textbf{Achtung:\;} $f(n) = \bigO(g(n))$ usw. heißt eigentlich $f(n) \in O(g(n))$. \par \abstand
+\pagebreak
+
+\textbf{Lemma:}
+\begin{eqnarray*}
+  f(n) = \bigO(g(n)) & \Leftrightarrow & \left( \frac{f(n)}{g(n)} \right)_{n \in \nat} \text{ ist beschränkt} \\ \\
+                     & \Leftrightarrow & g(n) = \Omega(f(n)) \\ \\ \\
+  f(n) = o(g(n)) & \Leftrightarrow & \lim_{n \to \infty} \frac{f(n)}{g(n)} = 0 \\ \\
+                 & \Leftrightarrow & g(n) = \omega(f(n))
+\end{eqnarray*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Beispiele für Laufzeiten}
+Funktionen, die bei Laufzeitabschätzung eine wichtige Rolle spielen:
+\begin{itemize}
+    \item $n$: jede Eingabestelle sehen
+    \item $\log_2 n$: Teile-und-Herrsche-Prinzip
+    \item $\sqrt{n}$: Anwendung von Seperatoren in planaren Graphen
+    \item $2^n$: Untersuchung aller Teilmengen (Brute force)
+    \item $n!$: Untersuchung aller Permutationen
+\end{itemize}
+\begin{itemize}
+    \item Summen: Hintereinander-Ausführung
+    \item Produkte: geschachtelte Schleifen
+\end{itemize}
+
+Beispiel eines komplexen Ausdrucks:
+\begin{itemize}
+    \item $2^{\sqrt{n} \cdot \log_2 n}$: Faktorisierung $n$-stelliger Zahlen
+\end{itemize}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Die wichtigsten Werkzeuge}
+\textbf{Stirling-Formel:\;} Zur Abschätzung von $n!$ kann folgende Formel benutzt werden:
+$$ n! = \Omega \left( \sqrt{2 \pi n} \cdot \left( \frac{n}{e}^n \right) \right) $$
+genauer:
+$$ \sqrt{2 \pi n} \cdot \left( \frac{n}{e} \right)^n \platz \leq \platz n! \platz \leq \platz \sqrt{2 \pi n} \cdot \left( \frac{n}{e} \right)^{n + \frac{1}{12n}} $$
+
+\textbf{Eigenschaften der Logarithmus-Funktion:} \par \abstand
+Aufgrund der Definition des Logarithmus gilt:
+$$ n = c^{\log_c n} $$
+
+Anwendung:\; $T(n) = a^{\log_2 n}$
+\begin{eqnarray*}
+    a^{\log_2 n} &=& \left( 2^{\log_2 a} \right)^{\log_2 n} \\
+                 &=& 2^{\log_2 a \cdot \log_2 n} \\
+                 &=& \left( 2^{\log_2 n} \right)^{\log_2 n} \\
+                 &=& n^{\log_2 a}
+\end{eqnarray*}
+Das heißt: $T(n) = n^{\log_2 a}$ ein Polynom. \par \abstand
+
+Umformungsregeln für Logarithmen:
+\begin{itemize}
+    \item $\frac{\log_a c}{\log_a b} = \log_b c$
+    \item $\log_a b \cdot \log_b c = \frac{\ln b}{\ln a} \cdot \frac{\ln c}{\ln b} = \frac{\ln c}{\ln a} = \log_a c$
+    \item $\log_a (f(n) \cdot g(n)) = \log_a f(n) + \log_a g(n)$
+    \item $\log_a \frac{f(n)}{g(n)} = \log_a f(n) - \log_a g(n)$
+    \item $\log_a b^c = c \cdot \log_a b$ \hfill (Folgerung: $\log_a n^k = \Theta(\log_a n)$)
+\end{itemize}
+\pagebreak
+
+\textbf{Wachstum der Logarithmus-Funktion:} \par \abstand
+Es gilt:
+$$ f(n) = \bigO(g(n)) \platz \Rightarrow \platz \log_a (f(n)) = \bigO(\log_a (g(n))) $$
+Beweis:
+\begin{eqnarray*}
+    f(n) &\leq& c \cdot g(n) \\ \\
+    \Rightarrow \platz \log_a f(n) &\leq& \log_a (c \cdot g(n)) \\
+                                   &=& \log_a c + \log_a g(n) \\
+                                   &\leq& c' \cdot \log_a g(n) \platz (\text{mit } c' = \log_a (c + 1))
+\end{eqnarray*}
+Achtung:\; Die Regel gilt nicht für die starte obere Schranke!
+$$ f(n) = o(g(n)) \platz \nRightarrow \platz \log_a (f(n)) = o(\log_a (g(n))) $$
+Beispiel:
+\begin{eqnarray*}
+    f(n) = \sqrt{n} & & g(n) = n \\ \\
+    \lim_{n \to \infty} \frac{f(n)}{g(n)} &=& \lim_{n \to \infty} \frac{\sqrt{n}}{n} \\
+                                          &=& \lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0 \\
+                                          &\Rightarrow& f(n) = o(g(n)) \\ \\
+    \lim_{n \to \infty} \frac{\log_a f(n)}{\log_a g(n)} &=& \lim_{n \to \infty} \frac{\log_a \sqrt{n}}{\log_a n} \\
+                                                        &=& \lim_{n \to \infty} \frac{\frac{1}{2} \log_a n}{\log_a n} \\
+                                                        &=& \lim_{n \to \infty} \frac{1}{2} = \frac{1}{2} \\
+                                                        &\nRightarrow& \neg (\log_a f(n) = o(\log_a g(n)))
+\end{eqnarray*}
+\pagebreak
+
+\textbf{Grundlagen für das Wachstum von Standardfunktionen:} \par \abstand
+Seien $a, b \in \realpos$, dann gilt:
+\begin{itemize}
+    \item Wenn $a < b$, dann gilt
+    $$ n^a = o(n^b) $$
+    Beweis:
+    $$ \underset{n \to \infty}{\lim} \frac{n^a}{n^b} = \underset{n \to \infty}{\lim} n^{a-b} = \underset{n \to \infty}{\lim} \frac{1}{n^{b-a}} = 0 $$
+    \item Es gilt (auch wenn $b$ sehr groß und $a$ sehr klein):
+    $$ (\log_2 n)^b = o(n^a) $$
+    \item Es gilt (auch wenn $b$ sehr groß und $a$ sehr klein):
+    $$ n^b = o(2^{a \cdot n}) $$
+\end{itemize}
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ab hier nicht korriegiert (reine Mitschrift, ohne Durchsicht) -->
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Polynominterpolation und Nullstellenbestimmung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Polynominterpolation und Nullstellenbestimmung}
+\textbf{Aufgabe:\;} Gegeben sind $n + 1$ Messpunkte $(x_0, y_0), (x_1, y_1), \ldots (x_n, y_n)$, wobei alle $x$-Werte verschieden sind. Gesucht wird ein Polynom $p(x)$ vom Grad $n$, so dass $p(x_i) = y_i$ für $i = 0 \ldots n$. \par \abstand
+\textbf{Satz:\;} Zu $n+1$ Stützpunkten $(x_0, y_0), (x_1, y_1), \ldots (x_n, y_n)$ mit $x_i \neq x_j$ gibt es \emph{genau} ein Polynom $p(x)$ vom Grad $\leq n$ mit $p(x_i) = y_i$ für $i = 0 \ldots n$. \par \abstand
+\textbf{Beweis:}
+\begin{enumerate}
+    \item Existenz eines Polynoms $p(x)$ (Lagrange-Polynom): \par \abstand
+    Es sei $0 \leq i \leq n$.
+\end{enumerate}
+\begin{eqnarray*}
+  &\vdots& \\
+  &\vdots& \\
+  &\vdots& \\
+  &\text{Vorlesung vom 18.6.2002 (fehlt)}& \\
+  &\vdots& \\
+  &\vdots& \\
+  &\vdots&
+\end{eqnarray*}
+\pagebreak
+
+\begin{eqnarray*}
+  &\vdots& \\
+  &\vdots& \\
+  &\vdots& \\
+  &\text{Vorlesung vom 20.6.2002 (fehlt)}& \\
+  &\vdots& \\
+  &\vdots& \\
+  &\vdots&
+\end{eqnarray*}

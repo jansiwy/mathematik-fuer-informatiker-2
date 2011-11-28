@@ -1,0 +1,236 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% nicht korriegiert (reine Mitschrift, ohne Durchsicht) -->
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Differentation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ableitung einer differenzierbaren Funktion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ableitung einer differenzierbaren Funktion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{eqnarray*}
+  &\vdots& \\
+  &\vdots& \\
+  &\vdots& \\
+  &\text{Vorlesung vom 20.6.2002 (fehlt)}& \\
+  &\vdots& \\
+  &\vdots& \\
+  &\vdots&
+\end{eqnarray*}
+\pagebreak
+
+\begin{eqnarray*}
+  &\vdots& \\
+  &\vdots& \\
+  &\vdots& \\
+  &\text{Vorlesung vom 25.6.2002 (fehlt)}& \\
+  &\vdots& \\
+  &\vdots& \\
+  &\vdots&
+\end{eqnarray*}
+\pagebreak
+
+\textbf{Mittelwertsatz:\;} $f : [a b] \rightarrow \real$ (differentierbar)
+$$ \exists x_0 \in (a, b) \platz f'(x_0) = \frac{f(b) - f(a)}{b-a} $$
+\textbf{Folgerung 1:\;} $f : I \rightarrow \real$
+\begin{eqnarray*}
+    \text{$f'(x) > 0$ auf I} &\Rightarrow& \text{$f$ ist streng monoton wachsend} \\
+    \text{$f'(x) < 0$ auf I} &\Rightarrow& \text{$f$ ist streng monoton fallend} \\
+    \text{$f'(x) \geq 0$ auf I} &\Rightarrow& \text{$f$ ist monoton wachsend} \\
+    \text{$f'(x) \leq 0$ auf I} &\Rightarrow& \text{$f$ ist monoton wachsend} \\
+    \text{$f'(x) = 0$ auf I} &\Rightarrow& \text{$f$ ist konstant}
+\end{eqnarray*}
+
+\textbf{Beweis (indirekt):\;} Folgt aus dem Mittelwertsatz \par \abstand
+
+\textbf{Folgerung 2:\;} $f, g : I \rightarrow \real$ und $f'(x) = g'(x)$ auf I
+$$ f(x) = g(x) + c $$
+\textbf{Beweis:}
+$$ [ f(x) - g(x) ]' = f'(x) - g'(x) = 0 \platz \rightarrow \platz f(x) - g(x) \text{ ist konstant} $$
+
+\subsection{Stationäre Punkte}
+\textbf{Definition:\;} Nullstellen der ersten Ableitung $f'(x)$ werden \wichtig{stationäre Punkte} von $f$ genannt. \par \abstand
+
+Welche stationären Punkte sind lokale Extrema?
+\begin{itemize}
+    \item Notwendig: $f'(x) = 0$
+    \item Hinrichend für Maximum: $f$ ist streng monoton wachsend links von $x$ und streng monoton fallend rechts von $x$, d.h.
+    \begin{itemize}
+        \item $f' > 0$ links von $x$
+        \item $f' < 0$ rechts von $x$
+    \end{itemize}
+    \begin{center}
+        GRAFIK: Graph mit Maximum und Ableitung
+    \end{center}
+    also: $f''(x) < 0$
+    \item Hinreichend für Minimum: entsprechend $f''(x) > 0$
+\end{itemize}
+
+Die zweite Ableitung beschreibt die Krümmung der Funktionskurve von $f$.
+\begin{center}
+    GRAFIK
+\end{center}
+\begin{itemize}
+    \item $f''(x) > 0$: Kurve ist linksgekrümmt (konvex von unten)
+    \item $f''(x) < 0$: Kurve ist rechtsgekrümmt (konvex von oben)
+\end{itemize}
+
+\textbf{Wendepunkt:\;} Ein Wendepunkt ist ein Punkt, in dem Linkskrümmung in Rechtskrümmung übergeht (oder umgekehrt).
+\begin{itemize}
+    \item notwendige Bedingung: $f''(x) = 0$
+    \item hinreichende Bedingung: $f'''(x) \neq 0$
+\end{itemize}
+
+\textbf{Satz (Verallgemeinerter Mittelwertsatz):\;} $f, g : [a, b] \rightarrow \real$ (differenzierbar in $(a, b)$, stetig auf $[a, b]$ und $g'(x) \neq 0$ in $(a, b)$). \par \abstand
+Es existiert ein $x_0 \in (a, b)$ mit
+$$ \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(x_0)}{g'(x_0)} $$
+\textbf{Beweis:\;} $g(a) \neq g(b)$ wegen $g'(x) \neq 0$ (da entweder streng monoton wachsend oder fallend)
+$$ F(x) := f(x) - \frac{f(b) - f(a)}{g(b) - g(b)} \cdot g(x) $$
+Mittelwertsatz für $F$:
+$$ F(a) = \frac{f(a) \cdot g(b) - f(b) \cdot g(a)}{g(b) - g(a)} = F(b) $$
+$$ \exists x_0 \platz F'(x_0) = 0$$
+Daraus folgt:
+$$ 0 = f'(x_0) - \frac{f(b) - f(a)}{g(b) - g(a)} \cdot g'(x) $$
+$$ \frac{x_0}{g'(x_0)} = \frac{f(b) - f(a)}{g(b) - g(a)} $$
+
+\textbf{Satz (Regel von Bernoulli-L'Hospital):\;} $f, g: (a, b) \rightarrow \real$ \par \abstand
+Voraussetungen:
+\begin{itemize}
+    \item differenzierbar auf $(a, b)$
+    \item $g'(x) \neq 0$ auf $(a, b)$
+    \item $f(x) \underset{x \to b-}{\longrightarrow} 0$ und $g(x) \underset{x \to b-}{\longrightarrow} 0$ oder \par
+    $f(x) \underset{x \to b-}{\longrightarrow} \infty$ und $g(x) \underset{x \to b-}{\longrightarrow} \infty$
+    \item $\underset{x \to b-}{\lim} \frac{f'(x)}{g'(x)} \in \real \cup \{ \pm \infty \}$
+\end{itemize}
+Dann ist:
+$$ \lim_{x \to b-} \frac{f(x)}{g(x)} = f $$
+\textbf{Beweis:\;} Nur $f(x), g(x) \underset{x \to b-}{\longrightarrow} 0$ \par \abstand
+\begin{itemize}
+    \item Setzen $f(b) = g(b) = 0$ (stetige Erweiterung)
+    \item Für jedes $x \in (a, b)$ betrachten wie verallgemeinerten Mittelwertsatz auf $[x, b]$.
+    $$ \exists x_0 \in (x, b) \platz \frac{f'(x_0)}{g'(x_0)} = \frac{f(b) - f(x)}{g(b) - g(x)} = \frac{f(x)}{g(x)} $$
+    \item Daraus folgt:
+    $$ x \to b- \platz \Rightarrow \platz x_0 \to b- \platz \rightarrow \platz \lim_{x \to b-} \frac{f'(x_0)}{g'(x_0)} = \lim_{x \to b-} \frac{f(x)}{g(x)} $$
+\end{itemize}
+
+\textbf{Anwenundung oft nach vorherigen Umformungen:\;}
+\begin{eqnarray*}
+  \lim_{x \to 0+} \left( \frac{1}{x} - \frac{1}{1 - \cos x} \right) &=& - \infty \\
+  \frac{1}{x} - \frac{1}{1 - \cos x} &=& \frac{\overbrace{1 - \cos x - x}^{f(x)}}{\underbrace{x \cdot (1 - \cos x)}_{g(x)}} \\ \\
+  \frac{f'(x)}{g'(x)} &=& \frac{\sin x - 1}{(1 - \cos x) + x \cdot \sin x} \underset{x \to 0+}{\longrightarrow} = - \infty
+\end{eqnarray*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Umkehrfunktion}
+$f : I \rightarrow \real, D \subseteq I$ \par \abstand
+$f$ ist umkehrbar auf $D$, falls die eingeschränkte Funktion
+$$ f |_D : D \rightarrow f(D) = \text{Im}(f |_D)  $$
+ist bijektiv. \par \abstand
+
+\textbf{Beispiel:}
+\begin{itemize}
+    \item $f(x) = x^2$ ($I = \real$)
+    \item $f |_{\realpos} : \realpos \rightarrow \realpos$ bijektiv
+    \item Umkehrfunktion $f^{-1}(x) = \sqrt{x}$
+    \item $x^2$ auch umkehrbar über $\real^-$: $f^{-1}(x) = - \sqrt{x}$
+    \begin{center}
+        GRAFIK: $x^2$ hat zu $\sqrt{x}$ eine Symmetrieachse, aber auch $- \sqrt{x}$
+    \end{center}
+\end{itemize}
+
+\textbf{Satz:}
+\begin{enumerate}
+    \willbuch
+    \item $f$ streng monoton auf $D$, daraus folgt $f$ umkehrbar auf $D$, d.h. $f$ differenzierbar auf $D$ und $f'(x) \neq 0$ auf $D$ $\Rightarrow$ $f$ umkehrbar auf $D$
+    \item Die Graphen von $f$ und der Umkehrung $f^{-1}$ sind symmetrisch bezüglich derGeraden $y = x$.
+    \item Ist $f : I \rightarrow \real$ über $D$ umkehrbar und differenzierbar, so ist auch die Umkehrfunktion $g : f(D) \rightarrow \real$ in allen $x \in f(D)$ differenzierbar und es gilt $g'(x) = \frac{1}{f'(g(x))}$.
+\end{enumerate}
+
+\textbf{Beweis c):}
+\begin{align*}
+    \frac{1}{f'(g(x))} &= \frac{1}{\underset{y \to g(x)}{\lim} \frac{f(y) - f(g(x))}{y - g(x)}} \\
+    \intertext{$g$ stetig, $x' \to x$, dann $g(x') \to g(x)$}
+                       &= \frac{1}{\underset{x' \to x}{\lim} \frac{f(g(x')) - f(g(x))}{g(x') - g(x)}} \\
+    \intertext{$g$ ist Umkehrfunktion von $f$, also $fg = \text{Id}$}
+                       &= \frac{1}{\underset{x' \to x}{\lim} \frac{x' - x}{g(x') - g(x)}} \\
+                       &= \underset{x' \to x}{\lim} \frac{g(x') - g(x)}{x' - x} \\
+                       &= g'(x)
+\end{align*}
+
+\textbf{Beispiele:}
+\begin{enumerate}
+    \item $f(x) = x^3$ mit $f : \real \to \real$ \\
+    $f'(x) = 3x^2 \geq 0$, $f$ ist streng monoton wachsend, $f$ ist umkehrbar
+    \begin{eqnarray*}
+        f^{-1}(x) &=& \sqrt[3]{x} \\
+        \left( \sqrt[3]{x} \right)' &=& \frac{1}{3 \left( \sqrt[3]{x} \right)^2 } = \frac{1}{3} x^{-\frac{2}{3}}
+    \end{eqnarray*}
+    \item $f(x) = x^n$, $n$ gerade, $f$ ist umkehrbar über $\realpos$ oder \\
+    $f(x) = x^n$, $n$ ungerade, $f$ ist umkehrbar über $\real$
+    \begin{eqnarray*}
+        \sqrt[n]{x} = x^{\frac{1}{n}} \\
+        \left( \sqrt[n]{x} \right)' &=& \frac{1}{n \left( \sqrt[n]{x} \right)^{n-1} } = \frac{1}{n} \cdot x^{\frac{-n+1}{n}}
+    \end{eqnarray*}
+    rationale Potenzen: \\
+    $f_{\alpha}(x) = x^{\alpha}$ mit $\alpha = \frac{m}{n} \in \rat$, $n > 0$
+    $$ f_{\alpha}(x) = \left\{ \begin{array}{l@{\text{ falls }}l}
+        \sqrt[n]{x} & m > 0 \\
+        1 & m = 0 \\
+        \frac{1}{\left( \sqrt[n]{x} \right)^{-m}} & m < 0
+    \end{array} \right. $$
+    Einheitlicher Definitionsbereich $\realpos$
+    \begin{eqnarray*}
+        f'_{\alpha}(x) &=& m \cdot \left( \sqrt[n]{x} \right)^{m-1} \cdot \frac{1}{n \cdot \left( \sqrt[n]{x} \right)^{n-1} } \\
+                       &=& \frac{m}{n} \cdot \left( \sqrt[n]{x} \right)^{m-1-(n-1)} \\
+                       &=& \frac{m}{n} \cdot \left( \sqrt[n]{x} \right)^{m-n} \\
+                       &=& \frac{m}{n} \cdot x^{\frac{m-n}{n}} \\
+                       &=& \alpha \cdot x^{\alpha - 1}
+    \end{eqnarray*}
+    \item Winkelfunktionen
+    \begin{center}
+        GRAFIK: $\sin : \real \to [-1, 1]$
+    \end{center}
+    $\sin : \real \to [-1, 1]$, umkehrbar auf $\left[ - \frac{\pi}{2}, \frac{\pi}{2} \right]$, da $\cos$ in diesem Bereich $\geq 0$, also $\sin$ monoton steigend \\
+    Umkehrfunktion: $\arcsin : [-1, 1] \to [-\frac{\pi}{2}, \frac{\pi}{2} ] $ (0-ter Zweig von $\arcsin$) \\
+    1. Zweig wäre z.B. die Umkehrung von $\sin$ auf $\left[ \frac{\pi}{2}, \frac{3 \pi}{2} \right]$ \par \abstand
+    Ableitung:
+    Aus $\arcsin x \in [-\frac{\pi}{2}, \frac{\pi}{2}]$ folgt $\cos(\arcsin x) \geq 0$ \\
+    $\cos y = \sqrt{1 - \sin^2 y}$ für $y \in [-\frac{\pi}{2}, \frac{\pi}{2}]$, da $\cos$ in diesem $\geq 0$
+    \begin{eqnarray*}
+        (\arcsin x)' &=& \frac{1}{\cos(\arcsin x)} \\
+                     &=& \frac{1}{\sqrt{1 - \sin^2 (\arcsin x)}} \\
+                     &=& \frac{1}{\sqrt{1 - x^2}}
+    \end{eqnarray*}
+    $\cos : \real \to [-1, 1]$ umkehrbar auf $[0, \pi]$ \\
+    $\arccos : [-1, 1] \to [0, \pi]$
+    $$ (\arccos x)' = - \frac{1}{\sqrt{1 - x^2}} $$
+    $\tan : \real \backslash \{ \frac{\pi}{2} + k \pi \} \to (- \infty, + \infty)$ \\
+    umkehrbar auf $(-\frac{\pi}{2}, \frac{\pi}{2})$ \\
+    $\arctan : \real \to (- \frac{\pi}{2}, \frac{\pi}{2})$
+    \begin{eqnarray*}
+        (\arctan' x)' &=& \frac{1}{\tan'(\arctan x)} \\
+                      &=& \frac{1}{\frac{sin^2(\arctan x) + \cos^2(\arctan x)}{\cos^2(\arctan x)}} \\
+                      &=& \frac{1}{\tan^2(\arctan x) + 1} \\
+                      &=& \frac{1}{x^2 + 1}
+    \end{eqnarray*}
+    $\text{arccot } : \real \to (0, \pi)$
+    $$ (\text{arccot } x)' = - \frac{1}{x^2 + 1} $$
+    \item Exponentialfunktion:
+    $$ \exp(x) = \underset{n \to \infty}{\lim} \left( 1 + \frac{x}{n} \right)^n = e^x $$
+    Idee für Ableitung:
+    \begin{eqnarray*}
+        \frac{d}{dx} e^x &=& \frac{d}{dx} \overset{n \to \infty}{\lim} \left( 1 + \frac{1 + \frac{x}{n}}{} \right)^n \\
+                         &\overset{?}{=}& \underset{n \to \infty}{\lim} \frac{d}{dx} \left( 1 + \frac{x}{n} \right)^n \\
+                         &=& \underset{n \to \infty}{\lim} \left[ n \cdot \left( 1 + \frac{x}{n} \right)^{n-1} \cdot \frac{1}{n} \right] \\
+                         &=& \frac{\underset{n \to \infty}{\lim} \left( 1 + \frac{x}{n} \right)^n}{\underset{n \to \infty}{\lim} \left( 1 + \frac{x}{n} \right)}
+    \end{eqnarray*}
+    genaue Gründung mit Mittelwertsatz!
+    Daraus folgt: $\exp'(x) = \exp(x)$ \\
+    Aus $e^x > 0$ folgt, dass $\exp$ streng monoton wachsend ist \\
+    $\exp$ ist umkehrbar über $\real$ \\
+    Umkehrfunktion: $\ln : \realpos \to \real$
+    $$ \ln' x = \frac{1}{\exp'(\ln x)} = \frac{1}{\exp(\ln x)} = \frac{1}{x} $$
+\end{enumerate}

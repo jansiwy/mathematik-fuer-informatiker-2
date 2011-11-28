@@ -1,0 +1,695 @@
+\chapter{Aufbau des Zahlensystems}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zahlenbereiche und algebraische Strukturen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Zahlenbereiche und algebraische Strukturen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Natürliche und ganze Zahlen}
+Unser Zahlensystem kann auf $\nat$ zurückgeführt werden. Die Grundlegende Operation in $\nat$ ist die Addition. \\
+Problem: Nicht alle Gleichungen haben Lösung in $\nat$:
+\begin{eqnarray*}
+    x+3=5 & \Rightarrow & x=2 \\
+    x+5=3 & \Rightarrow & \text{keine Lösung}
+\end{eqnarray*}
+Lösung: Erweiterung durch Einführung von formalen Inversen $-1, -2, -3 \:\ldots$ führt zur Erweiterung des Zahlenbereiches auf $\ganz$.
+\begin{eqnarray*}
+    x+5      &=& 3 \\
+    x+5+(-5) &=& 3+(-5) \\
+    x+0      &=& -2 \\
+    x        &=& -2
+\end{eqnarray*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gruppe}
+\textbf{Definition:\;} $(G, *)$ ist eine \wichtig{Gruppe}, falls
+\newcounter{gruppe}
+\begin{list}{(G\arabic{gruppe})}{\usecounter{gruppe} \setlength{\leftmargin}{1.8cm} \setlength{\labelsep}{0.5cm}}
+    \item $\forall a, b, c \in G \platz (a*b)*c = a*(b*c)$ \hfill (Assoziativität)
+    \item $\exists e \in G \platz \forall a \in G \platz a*e=e=e*a$ \hfill (neutrales Element)
+    \item $\forall a \in G \platz \exists \bar{a} \in G \platz a*\bar{a}=e=\bar{a}*a$ \hfill (inverses Element)
+\end{list}
+$(G, *)$ ist \emph{kommutative (abelsche) Gruppe}, falls zudem $\forall a, b \in G \platz a*b=b*a$ gilt.
+\seite%
+
+\textbf{Beispiele:}
+\begin{itemize}
+    \renewcommand{\labelitemii}{$\bullet$}
+    \item $(\ganz, +)$ ist eine Gruppe.
+    \item $(\nat, +)$ erfüllt die Kriterien (G1) und (G2) und ist damit ein \wichtig{Monoid}.
+    \item $(\natpos, +)$ erfüllt nur das Kriterium (G1) und ist damit eine \wichtig{Halbgruppe}.
+    \item $(\rat, +)$ ist eine Gruppe.
+    \item $(\rat, \cdot)$ ist ein Monoid (kein zu $0$ inverses Element).
+    \item $(\rat\backslash\{0\}, \cdot)$ ist eine Gruppe.
+    \item $(S(M), \circ)$, wobei $S(M)$ die Menge der bijektiven Funktionen über $M$ ist, ist eine Gruppe.
+    \begin{itemize}
+        \item neutrales Element ist $Id_M$
+        \item inverses Element ist $f^{-1}$
+    \end{itemize}
+\end{itemize}
+\seite%
+
+\textbf{Schlussfolgerungen aus der Definition:}
+\begin{enumerate}
+    \item Das neutrale Element in einer Gruppe ist eindeutig. \\
+    Beweis:\; Angenommen $e$ und $e'$ mit $e \neq e'$ erfüllen beide (G2). \\
+    Daraus würde folgen:
+    $$e=e*e' \platz \wedge \platz e'=e*e' \platz \Rightarrow \platz e=e'$$
+    \item Das zu einem $a \in G$ inverse Element ist eindeutig. \\
+    Beweis:\; Angenommen $\bar{a}$ und $\tilde{a}$ mit $\bar{a} \neq \tilde{a}$ erfüllen beide (G3). \\
+    Daraus würde folgen:
+    \begin{eqnarray*}
+        \bar{a} * a &=& e \\
+        (\bar{a} * a) * \tilde{a} &=& e * \tilde{a} \\
+        \bar{a} * (a * \tilde{a}) &=& \tilde{a} \\
+        \bar{a} * e &=& \tilde{a} \\
+        \bar{a} &=& \tilde{a}
+    \end{eqnarray*}
+    \item Man kann von links und rechts "`kürzen"'. \\
+    Das heißt:
+    \begin{eqnarray*}
+        a*b=a*c & \platz \Rightarrow \platz & b=c \\
+        a*b=c*b & \platz \Rightarrow \platz & a=c
+    \end{eqnarray*}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ring}
+\textbf{Definition:\;} $(R, \oplus, \odot)$ ist ein \wichtig{Ring}, falls
+\newcounter{ring}
+\begin{list}{(R\arabic{ring})}{\usecounter{ring} \setlength{\leftmargin}{1.8cm} \setlength{\labelsep}{0.5cm}}
+    \item $(R, \oplus)$ kommutative Gruppe
+    \item $(R, \odot)$ Halbgruppe
+    \item $\forall a, b, c \in R$ \hfill (Distributivität)
+    \begin{itemize}
+        \item $a \odot (b \oplus c) = a \odot b \oplus a \odot c$
+        \item $(a \oplus b) \odot c = a \odot c \oplus b \odot c$
+    \end{itemize}
+\end{list}
+\textbf{Definition:\;} $(R, \oplus, \odot)$ ist \emph{kommutativer Ring} mit~$1$, falls die Operation~$\odot$ kommutativ und $(R, \odot)$ ein Monoid mit dem neutralen Element~$1$ ist. \par \abstand
+\textbf{Beispiel:\;} $(\ganz, +, \cdot)$ ist ein kommutativer Ring mit $1$. \abstand
+\seite%
+
+In Ringen mit $\ganz$ kann man Gleichungen der Form $a+x=b$ lösen:
+\begin{eqnarray*}
+    a+x      &=& b \\
+    (-a)+a+x &=& b+(-a) \\
+    x        &=& b-a
+\end{eqnarray*}
+Aber Gleichungen der Form $a*x=b$ sind nicht immer lösbar:
+$$2 \cdot x = 3$$
+Lösung: Erweiterung des Zahlensystems zu den gebrochenen Zahlen $\rat$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gebrochen rationale Zahlen}
+Allgemeine Vorgehensweise:
+\begin{enumerate}
+    \item Darstellung von Brüchen als geordnete Paare:
+    $$ \begin{array}{ccccc}
+      B & = & \ganz & \times & \natpos \\
+      \uparrow & & \uparrow & & \uparrow \\
+      \text{\scriptsize Brüche} & & \text{\scriptsize Zähler} & & \text{\scriptsize Nenner}
+    \end{array} $$
+    \item Da unterschiedliche Brüche die gleiche Zahl darstellen können, muss $B$ partitioniert werden (Bildung einer Äquivalenzrelation):
+    $$(a, b) \sim (c, d) \platz \Leftrightarrow \platz ad = bc$$
+    Die Äquivalenzklassen von $\sim$ bilden die \emph{gebrochen rationalen Zahlen}\index{Gebrochen rationale Zahlen}.
+    $$\rat = B_{/\sim}$$
+    \item Operationen auf $\rat$:
+    \begin{eqnarray*}
+    (a, b)_\sim \oplus (c, d)_\sim &=& (ad+bc, cd)_\sim \\
+    (a, b)_\sim \odot  (c, d)_\sim &=& (ac, bd)_\sim
+    \end{eqnarray*}
+    Man müsste noch formal zeigen, dass diese Operationen mit $\sim$ verträglich sind.
+    \item Nachweis der Ringstruktur:
+    \begin{enumerate}
+        \item $\oplus$ und $\odot$ sind assoziativ und kommutativ.
+        \item $(0, 1)_\sim$ ist neutrales Element für $\oplus$.
+        \item $(-a, b)_\sim$ ist $\oplus$-invers zu $(a, b)_\sim$.
+        \item $(1, 1)_\sim$ ist neutrales Element für $\odot$.
+        \item $(b, a)_\sim$ ist $\odot$-invers zu $(a, b)_\sim$, wenn $(a, b)_\sim \neq (0, 1)_\sim$.
+    \end{enumerate}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Körper}
+\textbf{Definition:\;} $(K, \oplus, \odot)$ ist ein \wichtig{Körper}, falls
+\newcounter{koerper}
+\begin{list}{(K\arabic{koerper})}{\usecounter{koerper} \setlength{\leftmargin}{1.8cm} \setlength{\labelsep}{0.5cm}}
+    \item $(K, \oplus)$ kommutative Gruppe mit dem neutralen Element $e$
+    \item $(K \backslash \{e\}, \odot)$ kommutative Gruppe
+    \item $\forall a, b, c \in K \platz a \odot (b \oplus c) = a \odot b \oplus a \odot c$ \hfill (Distributivität)
+\end{list}
+\seite%
+
+\textbf{Beispiele:}
+\begin{itemize}
+    \item $(\rat, +, \cdot)$ ist ein Körper.
+    \item $(\mathbb{B}, \nleftrightarrow, \wedge)$ mit $\mathbb{B}=\{0, 1\}$ ist ein Körper.
+\end{itemize}
+\seite%
+
+In einem Körper können lineare Gleichungen der Form $a \cdot x+b=c$ mit $a \neq 0$ gelöst werden:
+$$x=\frac{c-b}{a}$$
+Jedoch gibt es keine Lösung für $x^2=2$ oder $x^2=-1$ in $\rat$. \abstand
+\seite%
+
+\textbf{Potenzen\index{Potenzen} in $\rat$:\;}
+\begin{itemize}
+    \item $a^0=1$ für $a \neq 0$
+    \item $a^{k+1} = a \cdot a^k$ für alle $k \in \nat$
+    \item $a^{-k}=\frac{1}{a^k}$
+\end{itemize}
+Exponenzialgesetz\index{Exponenzialgesetz}: $a^{k+l}=a^k \cdot a^l$ für $k, l \in \ganz$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Reelle Zahlen}
+Durch Erweiterung des Exponenzialgesetzes auf $k, l \in \rat$ erhält man eine Lösung z.\ B. für $a^{\frac{1}{2}}$ oder $a^{\frac{2}{5}}$:
+\begin{itemize}
+    \item $a^1 = a^{\frac{1}{2} + \frac{1}{2}} \platz \Rightarrow \platz a^{\frac{1}{2}}$ muss $\sqrt[2]{a}$ sein
+    \item $a^1 = a^{\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}} = a^{\frac{1}{5}} \cdot a^{\frac{1}{5}} \cdot a^{\frac{1}{5}} \cdot a^{\frac{1}{5}} \cdot a^{\frac{1}{5}} = (a^{\frac{1}{5}})^5 \platz \Rightarrow \platz a^{\frac{1}{5}}$ muss $\sqrt[5]{a}$ sein
+    \item $a^{\frac{2}{5}} = a^{\frac{1}{5} + \frac{1}{5}} = a^{\frac{1}{5}} \cdot a^{\frac{1}{5}} = (a^{\frac{1}{5}})^2 \platz \Rightarrow \platz a^{\frac{2}{5}}$ muss $(\sqrt[5]{a})^2$ sein
+\end{itemize}
+Verfahren zum Wurzelziehen liefern unendliche Dezimalbrüche. \abstand
+\seite%
+
+\textbf{Definition:\;} Eine positive \emph{reelle Zahl}\index{reelle Zahlen} ist ein unendlicher Dezimalbruch der Form $z_0,z_1,z_2,z_3\ldots$, wobei $z_0 \in \nat$ und $z_i \in \{0 \ldots 9\}$ für $i \geq 1$. \\
+Dezimalbrüche, die mit $\bar{9}$ enden, sind nicht zulässig ($2,43\bar{9} = 2,44$). \par \abstand
+\seite%
+
+\textbf{Satz:\;} Eine reelle Zahl $z_0,z_1 z_2 z_3 \ldots$ ($z_0 \in \nat$, $z_i \in\{0 \ldots 9\}$ für $i \geq 1$) ist genau dann rational, wenn die Folge $z_1 z_2 \ldots$ periodisch wird. \par \abstand
+
+\textbf{Beweis:\;} Beim Ausführen des schriftlichen Divisionverfahrens von $\frac{p}{q}$ mit $p, q \in \nat$ und $q \geq 1$, erhält man, sobald die letzte Stelle von $p$ in den Divisionsalgorithmus aufgenommen ist, in jedem weiteren Schritt einen Rest aus $\{0, \ldots q-1\}$.
+\newcounter{division}
+\begin{itemize}
+    \item Möglichkeit 1: Irgendwann tritt Rest $0$ ein. Damit bricht die Division ab und der Quotient hat die Form $z_0, z_1 \ldots z_k 0 0 \ldots$
+    \item Möglichkeit 2: Rest $0$ tritt nie auf. Damit muss sich ein Rest wiederholen und der Dezimalbruch wird periodisch
+\end{itemize}
+
+\textbf{Beispiel:\;} $93 : 7 = 13,\overline{285714}$ \par \abstand
+\seite%
+
+\textbf{Lemma:\;} Ein periodischer Dezimalbruch lässt sich als Bruch darstellen. \par \abstand
+
+\textbf{Beobachtung:}
+\begin{eqnarray*}
+    \frac{1}{9} &=& 0,\overline{1} \\
+    \frac{1}{99} &=& 0,\overline{01} \\
+    \frac{1}{999} &=& 0,\overline{001} \\
+    & \vdots & \\
+    \frac{1}{10^k -1} &=& 0,\overline{\underbrace{00 \ldots 0}_{k-1} 1}
+\end{eqnarray*}
+
+\textbf{Beispiel:\;}
+\begin{itemize}
+    \item $7,2\overline{3} = \frac{72}{10} + \frac{1}{10} \cdot 3 \cdot \frac{1}{9} = \frac{72}{10} + \frac{1}{30} = \frac{217}{30}$
+    \item $8,31\overline{23} = \frac{831}{100} + \frac{1}{100} \cdot 23 \cdot \frac{1}{99} = \frac{831}{100} + \frac{23}{9900} = \frac{20573}{2475}$
+\end{itemize}
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Die reellen Zahlen als geordnete Struktur
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Die reellen Zahlen als geordnete Struktur}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ordnung der reellen Zahlen}\label{reell}
+\textbf{Definition:\;} Positive reelle Zahlen werden folgendermaßen geordnet: \par \abstand
+Wenn $z = z_0,z_1 z_2 \ldots$ und $u = u_0,u_1 z_2 \ldots$ ($z, u \in \realpos$) unterschiedlich sind, dann sei $i \in \nat$ der erste Index, an dem ein Unterschied auftritt. Die Werte an dieser Stelle entscheiden, welche Zahl die kleinere ist.
+$$z_0,z_1 z_2 \ldots < u_0,u_1 u_2 \ldots \platz \Leftrightarrow \platz \exists i \in \nat \platz z_i < u_i \platz \wedge \platz \forall j < i \platz z_j = u_j$$
+Durch Erweitung des Zahlenbereiches auf alle reellen Zahlen $z, u \in \real$, werden die Zahlen folgendermaßen geordnet. Sind beide Zahlen negativ, dann ist diejenige Zahl kleiner, deren Betrag größer ist.
+$$-z_0,z_1 z_2 < -u_0,u_1 u_2 \platz \Leftrightarrow \platz u_0, u_1 u_2 < z_0, z_1 z_2$$
+Hat eine Zahl negatives Vorzeichen, die andere aber nicht, dann ist die negative die kleinere. \par \abstand \abstand
+\seite
+
+\textbf{Satz:\;} Für zwei beliebige reelle Zahlen $r_1, r_2 \in \realpos$ mit $r_1 < r_2$ gibt es eine rationale Zahl $q$  mit $r_1 < q < r_2$. \par \abstand
+\textbf{Beweis:\;} Sei $r_1 = z_0, z_1 z_2 z_3 \ldots$ und $r_2 = u_0, u_1 u_2 u_3 \ldots$ und $r_1 < r_2$, dann gilt nach Definition (siehe \ref{reell}) $\exists i \in \nat \platz z_i < u_i \platz \wedge \platz \forall j < i \platz z_j = u_j$. Außerdem enden $r_1$ und $r_2$ \emph{nicht} auf $\bar{9}$. Sei $k$ erste Stelle hinter $i$, für die $z_k \neq 9$, dann gibt es ein $q = z_0, z_1 z_2 \ldots (z_k + 1) \bar{0}$, so dass $r_1 < q < r_2$. \par \abstand
+\textbf{Beispiel:\;}
+\begin{eqnarray*}
+    r_1 &=& 2,1436|4|9997 \ldots \\
+    q   &=& 2,1436|4|9998\bar{0} \\
+    r_2 &=& 2,1436|5|0000 \ldots
+\end{eqnarray*}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Schnitte, Schranken Maxima, Minima und Grenzen}
+\textbf{Definitionen:\;} Sei $(M, \leq)$ eine linear geordnete Menge.
+\begin{flushleft}\begin{itemize}
+    \item Eine Partition von $M$ in die Mengen $A$ und $B$ ist ein \wichtig{Schnitt} von $M$, wenn $\forall x \in A \platz \forall y \in B \platz x \leq y$. \\
+    (Achtung:\; $A \cup B = M \;\; \wedge \;\; A \cap B = \emptyset$, da Partition)
+    \item Sei $C$ Teilmenge von $M$.
+    \begin{itemize}
+        \item $x$ ist \wichtig{obere Schranke}\index{Schranke} von $C$, falls $\forall y \in C \platz y \leq x$.
+        \item $x$ ist \wichtig{untere Schranke} von $C$, falls $\forall y \in C \platz y \geq x$.
+        \item $x$ ist größtes Element\index{größtes Element} \emph{(Maximum)}\index{Maximum} von $C$, falls $x$ obere Schranke von~$C$ ist und $x \in C$.
+        \item $x$ ist kleinstes Element\index{kleinstes Element} \emph{(Minimum)}\index{Minimum} von $C$, falls $x$ untere Schranke von~$C$ ist und $x \in C$.
+        \item $x$ ist obere Grenze\index{Grenze} \emph{(Supremum)}\index{Supremum} von~$C$, falls~$x$ die kleinste obere Schranke von~$C$ ist.
+        \item $x$ ist untere Grenze \emph{(Infimum)}\index{Infimum} von~$C$, falls~$x$ die größte untere Schranke von~$C$ ist.
+    \end{itemize}
+    \item Es gibt drei Typen von Schnitten:
+    \begin{itemize}
+        \item Typ 1: $A$ hat ein größtes Element und $B$ hat ein kleinstes Element.
+        \item Typ 2: $A$ hat \emph{kein} größtes Element und $B$ hat \emph{kein} kleinstes Element.
+        \item Typ 3: $A$ hat ein größtes Element und $B$ hat \emph{kein} kleinstes Element oder umgekehrt \emph{(Dedekind'scher Schnitt)}\index{Dedekind'scher Schnitt}.
+    \end{itemize}
+\end{itemize}\end{flushleft}
+\seite
+
+\textbf{Beispiele:\;}
+\begin{itemize}
+    \item[--] $A = \{0, 1, 2, 3\}$, $B=\{4, 5, 6, \ldots\}$ ist Typ-1-Schnitt von $\nat$.
+    \item[--] $A = \{q \in \ratpos \; | \; q^2 \leq 2\}$, $B = \{q \in \ratpos \; | \; q^2 \geq 2\}$ ist Typ-2-Schnitt von $\ratpos$.
+    \item[--] $A = \{r \in \realpos \; | \; r^2 \leq 2\}$, $B = \{r \in \realpos \; | \; r^2 > 2\}$ ist Typ-3-Schnitt von $\realpos$.
+    \item[--] $A = \{r \in \realpos \; | \; r^2 < 2\}$, $B = \{r \in \realpos \; | \; r^2 \geq 2\}$ ist Typ-3-Schnitt von $\realpos$.
+\end{itemize}
+\abstand \abstand \seite
+
+\textbf{Hilfssatz:\;} Besitzt $C$ ein Maximum, so ist dieses Maximum gleich dem Supremum (entsprechendes gilt für das Minimum in bezug auf das Infimum). \par \abstand
+\textbf{Beweis:\;} Sei $a$ das Maximum von $C$, dann ist $a \in C$ und $a$ ist obere Schranke von $C$. Gäbe es eine kleine obere Schranke $a'$, dann müsste $a'$ auch obere Schranke für $a$ sein, da $a \in C$. Daraus würde folgen, dass $a \leq a'$. Das ist ein Widerspruch, da $a'$ kleiner als $a$ sein sollte. \par \abstand \abstand \seite
+
+\textbf{Satz:\;} Jede von oben (unten) beschränke Teilmenge $C \neq \emptyset$ von $\real$ besitzt ein Supremum (Infimum). \par \abstand
+\textbf{Beweis:\;}
+\begin{itemize}
+    \item Fall 1: $C$ ist von oben beschränkt und $C \cap \real^{\geq 0} \neq \emptyset$.
+    \begin{center}
+        \includegraphics{skript/grafiken/supinfr1}
+    \end{center}
+    Sei $x_0$ die größte Zahl aus $\nat$, so dass $x_0, \ldots \in C$ existiert;  \\
+    sei $x_1$ die größte Zahl aus $\{0 \ldots 9 \}$, so dass $x_0, x_1 \ldots \in C$ existiert; $\ldots$ \\
+    sei $x_i$ die größte Zahl aus $\{0 \ldots 9 \}$, so dass $x_0, x_1 x_2 \ldots x_i \ldots \in C$ existiert. \par
+    Man erhält einen unendlichen Dezimalzahl $x_0, x_1 x_2 \ldots$. \par
+    Problem: Für $C = \{ 0,9; \, 0,99; \, 0,999; \, \ldots \}$ wäre $0,\bar{9}$ nicht zulässig. \\
+    Lösung: Endet $x_0,x_1 x_2 \ldots$ mit $\bar{9}$ ab der Stelle $i$, so ersetzen wir diese Folge durch $x_0,x_1 x_2 \ldots (x_{i-1}+1) \bar{0} \ldots$. \par
+    $\Rightarrow$ Die so konstruierte Zahl ist das Supremum von $C$.
+    \item Fall 2: $C$ ist von unten beschränkt, und alle Elemente aus $C$ sind positiv oder~$0$ (d.h. $C \subseteq \real^{\geq 0}$).
+    \begin{center}
+        \includegraphics{skript/grafiken/supinfr2}
+    \end{center}
+    Sei $x_0$ die kleinste Zahl aus $\nat$, so dass $x_0,\ldots \in C$ existiert;  \\
+    sei $x_1$ die kleinste Zahl aus $\{0 \ldots 9 \}$, so dass $x_0,x_1 \ldots \in C$ existiert; $\ldots$ \\
+    sei $x_i$ die kleinste Zahl aus $\{0 \ldots 9 \}$, so dass $x_0,x_1 x_2 \ldots x_i \ldots \in C$ existiert. \par
+    Man erhält einen unendlichen Dezimalzahl $x_0,x_1 x_2 \ldots$. \par
+    $\Rightarrow$ Die so konstruierte Zahl ist das Infimum von $C$.
+    \pagebreak
+
+    \item Fall 3: $C$ ist von oben geschränkt, und alle Elemente aus $C$ sind negativ (d.h. $C \cap \real^{\geq 0} = \emptyset \Rightarrow C \subseteq \real^-$). \par
+    \begin{center}
+        \includegraphics{skript/grafiken/supinfr3}
+    \end{center}
+    Man konstruiert $-C = \{ x \; | \; -x \in C \}$ und führt es auf den Fall~2 zurück.
+    $$\sup C = - \inf -C$$
+    \item Fall 4: $C$ ist von unten geschränkt und $C \not\subseteq \real^{\geq 0} \Rightarrow C \cap \real^- \neq \emptyset$. \par
+    \begin{center}
+        \includegraphics{skript/grafiken/supinfr4}
+    \end{center}
+    Man konstruiert $-C = \{ x \; | \; -x \in C \}$ und führt es auf den Fall~1 zurück.
+    $$\inf C = - \sup -C$$
+\end{itemize}
+\pagebreak
+
+\textbf{Satz:\;} Für jeden Schnitt $A, B$ von $\realpos$ gilt $\sup A = \inf B$. \par \abstand
+\textbf{Beweis:\;} Alle $x \in B$ sind obere Schranke für $A$. Die kleinste obere Schranke (Supremum) von $A$ muss kleiner oder gleich $x$ für alle $x \in B$ sein. Das Supremum von $A$ ist untere Schranke von $B$. Damit ist die größte untere Schranke (Infimum) von $B$ größer oder gleich dem Supremum von $A$. \par
+Das heißt: $\sup A \leq \inf B$. Angenommen $\sup A < \inf B$ , dann gäbe es ein $q \in \rat$, so dass $\sup A < q < \inf B$ wobei $q \notin A \wedge q \notin B$. Dies wäre ein Widerspruch, denn $A \cup B = \realpos$. \par
+Damit ist $\sup A = \inf B$. \par \abstand
+\textbf{Folgerung:\;} Jeder Schnitt von $\realpos$ ist ein Dedekind'scher Schnitt. Sei $A, B$ Schnitt in~$\realpos$ mit $c = \sup A = \inf B$.
+\begin{itemize}
+    \item Fall 1: $A$ hat ein größtes Element und $B$ hat \emph{kein} kleinstes Element.
+    $$c \in A \wedge c \notin B \platz \Rightarrow \platz \sup A = \max A$$
+    \item Fall 1: $A$ hat \emph{kein} größtes Element und $B$ hat ein kleinstes Element.
+    $$c \notin A \wedge c \in B \platz \Rightarrow \platz \inf B = \min B$$
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ungleichungen}
+\textbf{Basisungleichungen:\;} Für beliebige $a, b, c \in \real$ gilt:
+\begin{itemize}
+    \item $a \leq b \platz \Leftrightarrow \platz a+c \leq b+c$
+    \item $a \leq b \platz \wedge \platz c \geq 0 \platz \Rightarrow \platz a \cdot c \leq b \cdot c$
+    \item $0 \leq a \leq b \platz \Leftrightarrow \platz -b \leq -a \leq 0$
+    \item $a > 0 \platz \Leftrightarrow \platz \frac{1}{a} > 0$
+\end{itemize}
+
+\textbf{Weitere Ungleichungen:\;} Für beliebige $a, b, c, d \in \real$ gilt:
+\begin{itemize}
+    \item $a \leq b \platz \wedge \platz c\leq d \platz \Rightarrow \platz a+c \leq b+d$
+    \item $a \leq b \platz \wedge \platz c \leq 0 \platz \Rightarrow \platz b \cdot c \leq a \cdot c$
+    \item $0 \leq a \leq b \platz \wedge \platz 0 \leq c \leq d \platz \Rightarrow \platz 0 \leq a \cdot c \leq b \cdot d$
+    \item $0 \leq a \leq b \platz \wedge \platz c \leq d \leq 0 \platz \Rightarrow \platz b \cdot c \leq a \cdot d \leq 0$
+    \item $0 < a \leq b \platz \Rightarrow \platz 0 < \frac{1}{b} \leq \frac{1}{a}$
+    \item $a \leq b < 0 \platz \Rightarrow \platz \frac{1}{b} \leq \frac{1}{a} < 0$
+    \item $a^2 \geq 0$
+\end{itemize}
+\pagebreak
+
+\textbf{Cauchy-Schwarz-Ungleichung:}\index{Cauchy-Schwarz-Ungleichung}
+\begin{eqnarray*}
+    \left( \sum_{i=1}^n a_i b_i \right)^2 &\leq& \sum_{i=1}^n a^2_i \cdot \sum_{i=1}^n b^2_i
+\end{eqnarray*}
+
+\textbf{Bernoulli-Ungleichung:}\index{Bernoulli-Ungleichung}
+$$ (1+h)^n \geq 1 + nh \platz \platz \platz (\text{mit } h \geq -1, h \in \real, n \in \natpos) $$
+
+Beweis über Induktion:
+\begin{eqnarray}
+    n=1 &\Rightarrow& 1+h \leq 1+h \nonumber \\
+    n \rightarrow n+1 &\Rightarrow& (1+h)^{n+1} \nonumber \\
+                                &=& (1+h)^n \cdot (1+h) \hspace{5cm} \eqname{Bemerkung: $1+h \geq 0$} \\
+                                &\geq& (1+nh) \cdot (1+h) \eqname{nach Induktionsvoraussetzung} \\
+                                &=& 1 + nh + h + nh^2 \nonumber \\
+                                &=& 1+(n+1)h + n \cdot h^2 \nonumber \\
+                                &\geq& 1+(n+1)h \nonumber
+\end{eqnarray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Intervalle}
+Die Klammern $[$ bzw. $]$ bezeichnen ein von links bzw. rechts abgeschlossenes Intervall; die Klammern $($ bzw. $)$ bezeichnen ein von links bzw. rechts offenes Intervall. Das heißt für $a, b \in \real$ mit $a < b$:
+\begin{eqnarray*}
+    [a, b] &=& \{ x \in \real \; | \; a \leq x \leq b \} \\
+    \left[ a, b \right) &=& \{ x \in \real \; | \; a \leq x < b \} \\
+    \left( - \infty, b \right] &=& \{ x \in \real \; | \; x \leq b \} \\
+    (a, \infty) &=& \{ x \in \real \; | \; a < x \} \\
+    (- \infty, \infty) &=& \real \\
+    (a-\varepsilon, a+\varepsilon) & & \text{$\varepsilon$-Umgebung von $a$ für $a \in \real$ und $\varepsilon > 0$}
+\end{eqnarray*}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Beträge}
+$$ | a | = \left\{
+    \begin{array}{rcc}
+        a & \text{falls} & a \geq 0 \\
+        -a & \text{falls} & a < 0
+    \end{array}
+                      \right. $$
+
+\textbf{Regeln:}
+\begin{itemize}
+    \item $- | a | \leq a \leq | a |$
+    \item $| -a | = | a |$
+    \item $| ab | = | a | \cdot | b |$
+    \item $\left| \frac{a}{b} \right| = \frac{| a |}{| b |}$
+    \item $| a | \leq b \platz \Leftrightarrow \platz -b \leq a \leq b$
+    \item $- \left( | a | + | b | \right) \leq a + b \leq | a | + | b |$
+    \item $\left| a+b \right| \leq \left| a \right| + \left| b \right|$ \hfill (Dreiecksungleichung)\index{Dreiecksungleichung}
+    \item $\left| \overset{n}{\underset{i=1}{\sum}} \; a_i \right| \leq \overset{n}{\underset{i=1}{\sum}} \; | a_i |$
+    \item $2 \cdot | a \cdot b | \leq a^2 + b^2$
+\end{itemize}
+Beweis:
+\begin{eqnarray*}
+    0 \leq (a-b)^2 &\wedge& 0 \leq (a+b)^2 \\
+    0 \leq a^2 + b^2 - 2ab &\wedge& 0 \leq a^2 + b^2 + 2ab \\
+    2ab \leq a^2 +  b^2 &\wedge& -(a^2+b^2) \leq 2ab \\
+    -(a^2+b^2) \leq & 2ab & \leq a^2 + b^2 \\
+    2 \cdot | a \cdot b | &\leq& a^2 + b^2
+\end{eqnarray*}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Komplexe Zahlen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Komplexe Zahlen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Einführung}
+\textbf{Idee:\;} Einführung einer imaginären Einheit für $i = \sqrt{-1}$. Damit werden die folgenden Gleichungen lösbar:
+\begin{eqnarray*}
+    x^2 + 1 &=& 0 \\
+    x^2 &=& -1 \\
+    x &=& \pm \sqrt{-1} \\
+      &=& \pm i \\ \\
+    x^2 -2x + 5 &=& 0 \\
+    x_{1, 2} &=& 1 \pm \sqrt{-4} \\
+            &=& 1 \pm \sqrt{4 (-1)} \\
+            &=& 1 \pm 2 \sqrt{-1} \\
+            &=& 1 \pm 2i
+\end{eqnarray*}
+\textbf{Definition:\;} Eine \emph{komplexe Zahl}\index{komplexe Zahlen} $z \in \comp$ hat die Form $z = x + yi$, wobei $x, y \in \real$ und $x = \text{Re } z$ der Realteil und $y = \text{Im } z$ der Imaginärteil von $z$ genannt wird. \par \abstand
+\textbf{Darstellung:\;} Eine komplexe Zahl wird als Paar $(x, y) \in \real^2$ bzw. als Punkt in der Ebene (komplexe Zahlenebene, \wichtig{Gauss-Ebene}) dargestellt. \par \abstand
+\begin{center}
+    \includegraphics{skript/grafiken/komplexgauss}
+\end{center}
+Jede reelle Zahl $x \in \real$ ist auch eine komplexe Zahl $x + 0i$, insbesondere $0 = 0 + 0i $.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gleichheit und Rechenregeln}
+\textbf{Rechenregeln:\;} $z = x + yi$ und $w = u + vi$ mit $z, w \in \comp$.
+\begin{eqnarray*}
+    z = w &\Leftrightarrow& x = u \; \wedge \; y = v \\
+    z \pm w &=& (x \pm u) + (y \pm v) i \\
+    z \cdot w &=& (xu - yv) + (xv + yu) i \\
+    \frac{z}{w} &=& \frac{xu + yv}{u^2 + v^2} + \frac{yu - xv}{u^2 +  v^2} i \platz\platz \text{für $w \neq 0$} \\
+\end{eqnarray*}
+\textbf{Herleitung:\;} Multiplikation
+\begin{eqnarray*}
+    z \cdot w &=& (x+yi)(u+vi) \\
+              &=& xu + xvi + yiu + yivi \platz\platz \text{(Bemerkung: $i^2 = -1$)} \\
+              &=& (xu - yv)  + (xv + yu) i
+\end{eqnarray*}
+\textbf{Herleitung:\;} Division
+\begin{eqnarray*}
+    \frac{z}{w} &=& \frac{x+yi}{u+vi} \\
+                &=& \frac{(x+yi)(u-vi)}{(u+vi)(u-vi)} \\
+                &=& \frac{(xu+yv)+(yu-xv)i}{u^2-v^2 i^2} \\
+                &=& \frac{xu+yv}{u^2+v^2}+\frac{yu-xv}{u^2+v^2}i \\
+\end{eqnarray*}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Konjugiert komplexe Zahl und Betrag}
+\textbf{Definition:\;} Für eine komplexe Zahl $z = x+yi \in \comp$ wird die Zahl $\overline{z} = x-yi$ die zu $z$ \wichtig{konjugiert komplexe Zahl} genannt. \par \abstand
+\textbf{Folgerung:\;} $z \cdot \overline{z} = x^2 + y^2$
+\begin{center}
+    \includegraphics{skript/grafiken/komplexkonjugiert}
+\end{center}
+\seite
+
+\textbf{Definition:\;} Der Betrag $|z| \in \real$ einer komplexen Zahl $z = x+yi$ ist definiert durch $|z| = \sqrt{x^2+y^2}$. \par \abstand
+\textbf{Folgerung:\;} $|z| = \sqrt{z \cdot \overline{z}}$ \par \abstand
+\textbf{Rechenregeln:\;} $z, w \in \comp$.
+\begin{eqnarray*}
+    \overline{z + w} &=& \overline{z} + \overline{w} \\
+    \overline{z \cdot w} &=& \overline{z} \cdot \overline{w} \\
+    \overline{\left( \frac{z}{w} \right)} &=& \frac{\overline{z}}{\overline{w}} \\
+    \overline{\overline{z}} &=& z \\
+    \text{Re } z &=& \frac{1}{2} (z + \overline{z}) \\
+    \text{Im } z &=& \frac{1}{2i} (z - \overline{z}) \\
+    | z \cdot w | &=& |z| \cdot |w| \\
+    \left| \frac{z}{w} \right| &=& \frac{|z|}{|w|} \\
+    | \overline{z} | &=& |z|
+\end{eqnarray*}
+\textbf{Herleitung:\;} $\overline{z \cdot w} = \overline{z} \cdot \overline{w}$ mit $z = x + yi$ und $w = u + vi$
+\begin{eqnarray*}
+    z \cdot w &=& (xu - yv) + (xv + yu)i \\
+    \overline{z \cdot w} &=& (xu - yv) + (- xv - yu)i \\
+    \overline{z} \cdot \overline{w} &=& (x-yi) \cdot (u-vi) \\
+                                    &=& (xu - yv) + (- xv - yu)i
+\end{eqnarray*}
+\textbf{Herleitung:\;} $| z \cdot w | = |z| \cdot |w|$
+\begin{eqnarray*}
+    | z \cdot w | &=& \sqrt{(zw)(\overline{zw})} \\
+                  &=& \sqrt{z \cdot w \cdot \overline{z} \cdot \overline{w}} \\
+                  &=& \sqrt{z \cdot \overline{z} \cdot w \cdot \overline{w}} \\
+                  &=& \sqrt{z \cdot \overline{z}} \cdot \sqrt{w \cdot \overline{w}} \\
+                  &=& |z| \cdot |w|
+\end{eqnarray*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Polarform}\index{Polarform}
+\textbf{Definition:\;} Jede komplexe Zahl $z \in \comp$ ist eindeutig bestimmt durch ihre Polarkordinaten $|z|$ und $\arg z$, wobei das Argument (Phase) von $z$, der Winkel zwischen der positiven reellen Achse und dem Strahl von $0$ nach $z$ ist, der mit (entgegen) den Uhrzeigersinn negativ (positiv) gemessen wird. Der Hauptwert für $\arg z$ wird aus $(-\pi, \pi]$ gewählt. \par \abstand
+\textbf{Achtung:\;} Für die Zahl $0$ ist $\arg$ nicht definiert! \par \abstand
+\textbf{Beispiel:\;} $z = 2 + 2i$ und $w = \sqrt{3} - i$
+\begin{center}
+    \includegraphics{skript/grafiken/komplexpolar}
+\end{center}
+$$ |z| = \sqrt{8} \platz\platz \arg z = \frac{\pi}{4} \platz\platz\platz\platz |w| = \sqrt{3+1} = 2 \platz\platz \arg w = - \frac{\pi}{6} $$
+\pagebreak
+
+\textbf{Kartische Darstellung $\mapsto$ Polardarstellung:}
+$$ z = x+yi \platz \mapsto \platz |z|=\sqrt{x^2+y^2} \platz \arg = \left\{
+    \begin{array}{rcc}
+        \arccos \frac{x}{|z|} & \text{falls} & y \geq 0 \\
+        - \arccos \frac{x}{|z|} & \text{falls} & y < 0
+    \end{array}
+                                                                   \right. $$
+\textbf{Polardarstellung $\mapsto$ Kartische Darstellung:}
+$$ r = |z| \platz \varphi = \arg z \platz \mapsto \platz z = r \cdot \cos \varphi + r \cdot i \cdot \sin \varphi $$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Eulers komplexe Exponentialfunktion}
+
+\textbf{Definition:\;} \wichtig{Eulers komplexe Exponentialfunktion}\index{komplexe Exponentialfunktion}\index{Exponentialfunktion, komplexe} ist definiert durch
+$$ e^{i\varphi} = \cos \varphi + i \sin \varphi $$
+Bemerkungen:
+\begin{enumerate}
+    \item In diesem Fall handelt es sich um eine Definition. Es ist jedoch auch die einzig sinnvolle Erweiterung der reellen Exponentialfunktion auf komplexe Zahlen.
+    \item $\left| e^{i \varphi} \right| = \sqrt{\cos^2 \varphi + \sin^2 \varphi} = \sqrt{1} = 1$ \\
+    D.h. $e^{i \varphi}$ liegt auf dem Einheitskreis.
+    \item Wächst $\varphi(t) = \alpha + \omega t$ linear, so bewegt sich $z(t) = e^{i \varphi(t)}$ mit konstanter Winkelgeschwindigkeit auf dem Einheitskreis. \par
+    Beispiel: $\alpha = \frac{\pi}{2}$ und $\omega = \frac{\pi}{12}$
+    \begin{center}
+        \includegraphics{skript/grafiken/komplexeuler}
+    \end{center}
+\end{enumerate}
+\seite
+
+\textbf{Exponentialform:\;} Man erweitert Eulers komplexe Exponentialfunktion auf alle komplexen Zahlen.
+$$ e^{x+yi} = e^x \cdot e^{yi} $$
+D.h. $ \left| e^{x+yi} \right| = e^x \platz \text{und} \platz \arg \left( e^{x+yi} \right) = y \pm 2k\pi \in \left( -\pi, \pi \right] $ \par \abstand \abstand
+
+\textbf{Vorteile:\;} Einfache Multiplikations- und Divisionsformeln.
+\begin{eqnarray*}
+    z &=& |z| \cdot e^{i \varphi} \\
+    w &=& |w| \cdot e^{i \psi} \\
+    z \cdot w &=& |z| \cdot e^{i \varphi} \cdot |w| \cdot e^{i \psi} = |z| \cdot |w| \cdot e^{i \varphi} \cdot e^{i \psi} = |z| \cdot |w| \cdot e^{i \cdot \left( \varphi + \psi \right)} \\
+    \frac{z}{w} &=& \frac{|z|}{|w|} \cdot \frac{e^{i \varphi}}{e^{i \psi}} = \frac{|z|}{|w|} \cdot e^{i \cdot \left( \varphi - \psi \right)}
+\end{eqnarray*}
+
+\textbf{Satz (De Moivre):}
+\begin{enumerate}
+    \willbuch
+    \item $e^{i \varphi} \cdot e^{i \psi} = e^{i \left( \varphi + \psi \right)}$
+    \begin{eqnarray*}
+        e^{i \varphi} \cdot e^{i \psi} &=& \left( \cos \varphi + i \sin \varphi \right) \cdot \left( \cos \psi + i \sin \psi \right) \\
+                                       &=& \cos \varphi \cdot \cos \psi - \sin \varphi \cdot \sin \psi + i \left( \sin \varphi \cdot \cos \psi + \cos \varphi \cdot \sin \psi \right) \\
+                                       &=& \cos \left( \varphi + \psi \right) + i \sin \left( \varphi + \psi \right) \\
+                                       &=& e^{i \left( \varphi + \psi \right) }
+    \end{eqnarray*}
+    \item $\left( e^{i \varphi} \right)^n = e^{i n \varphi}$ (Beweis über Induktion von a))
+    \item $\overline{\left( e^{i \varphi} \right)} = e^{i \left( - \varphi \right)} = \frac{1}{e^{i \varphi}}$
+    \begin{eqnarray*}
+        \overline{\left( e^{i \varphi} \right)} &=& \overline{\left( \cos \varphi + i \sin \varphi \right)} \\
+                                                &=& \cos \varphi - i \sin \varphi \\
+                                                &=& \cos \varphi + i \left( - \sin \varphi \right) \\
+                                                &=& \cos (- \varphi) + i \sin (- \varphi) \\
+                                                &=& e^{i \left( - \varphi \right)} \\
+                                                &=& \frac{1}{e^{i \varphi}}
+    \end{eqnarray*}
+
+\end{enumerate}
+\pagebreak
+
+\textbf{Einheitswurzel in $\comp$:} \par \abstand
+\textbf{Definition:\;} $\sqrt[n]{1}$ bezeichnet in $\comp$ die Menge aller Nullstellen des Polynoms $x^n - 1$ (d.h. $\loes$ von $x^n = 1$).
+
+$$\sqrt[n]{1} = \{ \zeta_0, \zeta_1, \zeta_2, \ldots \zeta_{n-1} \} = \left\{ 1, e^{i \cdot 1 \cdot \frac{2\pi}{n}}, e^{i \cdot 2 \cdot \frac{2\pi}{n}}, \ldots e^{i \cdot \left( n-1 \right) \cdot \frac{2\pi}{n}} \right\} $$
+
+Bemerkung:\; In $\real$ ist es nur die positive Wurzel, falls sie existiert.
+\begin{eqnarray*}
+    \text{in $\real$} \platz \sqrt[2]{1} &=& 1 \\
+    \text{in $\comp$} \platz \sqrt[2]{1} &=& \{ 1, -1 \}
+\end{eqnarray*}
+
+Überprüfung der Formel durch Potenzieren:
+$$\left( e^{i \cdot \left( j \cdot \frac{2\pi}{n} \right)} \right)^n = e^{i \cdot n \cdot j \cdot \frac{2\pi}{n}} = e^{i \cdot \left( 2\pi j \right) } = 1$$
+
+\textbf{Wurzel beliebiger Zahlen in $\comp$:} \par \abstand
+$\sqrt[n]{a}$ (mit $a = |a| \cdot e^{i \varphi}$) wird folgendermaßen bestimmt:
+$$ \sqrt[n]{a} \Rightarrow \sqrt[n]{|a|} \cdot e^{i \cdot \frac{\varphi}{n}} $$
+Dies ist das erste Element der Lösungsmenge. Alle weiteren Lösungen durch Multiplikation dieser Lösung mit den Lösungen der n-ten Einheitswurzel ermittelt.
+$$ \sqrt[n]{a} = \left\{ \left. \sqrt[n]{|a|} \cdot e^{i \cdot \frac{\varphi}{n}} \cdot \zeta_j \; \right| \; 0 \leq j \leq n \right\} $$
+Überprüfung der Formel durch Potenzieren:
+$$\left( \sqrt[n]{|a|} \cdot e^{i \cdot \frac{\varphi}{n}} \right)^n = \sqrt[n]{|a|}^n \cdot \left( e^{i \cdot \frac{\varphi}{n}} \right)^n = |a| \cdot e^{i \varphi} = a$$
+\pagebreak
+
+\textbf{Beispiel:\;} Zu bestimmen ist $\sqrt[3]{2 + 2i}$.
+\begin{eqnarray*}
+    a &=& 2 + 2i \\
+    |a| &=& \sqrt{2^2 + 2^2} = \sqrt{8} \\
+    \sqrt[3]{|a|} &=& \sqrt[3]{\sqrt{8}} = \sqrt{2} \\
+    \arg a &=& \varphi = \frac{\pi}{4} \\
+    \sqrt[3]{a} &\Rightarrow& \sqrt{2} \cdot e^{i \cdot \frac{\pi}{4} \cdot \frac{1}{3}} = \sqrt{2} \cdot e^{i \cdot \frac{\pi}{12}} \\
+    \sqrt[3]{a} &=& \left\{ \sqrt{2} \cdot e^{i \cdot \frac{\pi}{12}}, \sqrt{2} \cdot e^{i \cdot \left( \frac{\pi}{12} + \frac{2\pi}{3} \right) }, \sqrt{2} \cdot e^{i \cdot \left( \frac{\pi}{12} + \frac{4\pi}{3} \right) } \right\} \\
+                &=& \left\{ \sqrt{2} \cdot e^{i \cdot \frac{\pi}{12}}, \sqrt{2} \cdot e^{i \cdot \frac{3\pi}{4} }, \sqrt{2} \cdot e^{i \cdot \frac{17\pi}{12} } \right\}
+\end{eqnarray*}
+\begin{center}
+    \includegraphics{skript/grafiken/komplexwurzel}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fundamentalsatz der Algebra (Gauss)}
+\textbf{Satz:\;} Jedes komplexe Polynom $p(z) = a_n z^n + a_{n-a} z^{n-1} + \ldots + a_1 z + a_0$ mit $a_i \in \comp$ hat eine komplexe Nullstelle. Folglich kann $p(z)$ in der Form
+$$ a_n \cdot \prod_{\mu=1}^n (z-z_{\mu}) $$
+dargestellt werden, wobei $z_{\mu}$ die Nullstellen von $p(z)$ sind.
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Harmonische Schwingungen}
+\textbf{Definition:\;} Eine physikalische Größe $s(t) = A \cdot \cos(\omega t + \alpha)$ mit $A, \omega, \alpha \in \real$ wird harmonische Schwingung genannt.
+\begin{itemize}
+    \item Amplitude: $A$
+    \item Periode: $\frac{2\pi}{\omega}$
+    \item Frequenz: $\frac{\omega}{2\pi}$
+\end{itemize}
+
+\textbf{Überlagerung:\;} Wir betrachten Überlagerung von zwei harmonischen Schwingungen gleicher Frequenz.
+\begin{center}
+    \includegraphics{skript/grafiken/harmonischeschwingungen}
+\end{center}
+\begin{eqnarray*}
+    s_1(t) &=& A_1 \cdot \cos (\omega t + \alpha_1) \\
+    s_2(t) &=& A_2 \cdot \cos (\omega t + \alpha_2) \\
+    s(t) &=& s_1(t) + s_2(t)
+\end{eqnarray*}
+$s_i(t)$ wird behandelt als Realteil von $A_j \cdot e^{\omega t + \alpha_j}$:
+\begin{eqnarray*}
+    s_1(t) + s_2(t) &=& \text{Re} (A_1 \cdot e^{i (\omega t + \alpha_1)} + A_2 \cdot e^{i (\omega t + \alpha_2)}) \\
+                    &=& \text{Re} (A_1 \cdot e^{i \omega t} \cdot e^{i \alpha_1} + A_2 \cdot e^{i \omega t} \cdot e^{i \alpha_2} \\
+                    &=& \text{Re} ((A_1 \cdot e^{i \alpha_1} + A_2 \cdot e^{i \alpha_2}) \cdot e^{i \omega t} \\
+                    &=& \text{Re} ((a_1 + a_2) \cdot e^{i \omega t}) \\
+                    &=& \text{Re} (A \cdot e^{i \varphi} \cdot e^{i \omega t}) \\
+                    &=& \text{Re} (A \cdot e^{i (\omega t + \varphi)}) \\
+                    &=& A \cdot \cos (\omega t + \varphi)
+\end{eqnarray*}
+Damit handelt es sich um eine harmonische Schwingung (wobei $A = |a_1 + a_2|$ und $\varphi = \arg (a_1 + a_2)$).
+\pagebreak
+
+\textbf{Wechselstromnetze:\;} Wir betrachten die Wechselspannung~$u(t)$ mit dem Strom~$j(t)$.
+\begin{eqnarray*}
+    u(t) &=& u_0 \cos (\omega t + \alpha) \\
+    j(t) &=& j_0 \cos (\omega t + \beta)
+\end{eqnarray*}
+\begin{itemize}
+    \item $u(t)$ ist Realteil von $U(t) = u_0 \cdot e^{i(\omega t + \alpha)}$
+    \item $j(t)$ ist Realteil von $J(t) = j_0 \cdot e^{i (\omega t + \beta)}$
+    \item komplexer Widerstand: $Z(t) = \frac{U(t)}{J(t)}$ ist eine Konstante
+    $$Z(t) = \frac{U(t)}{J(t)} = \frac{u_0 \cdot e^{i \cdot (\omega t + \alpha)}}{j_0 \cdot e^{i \cdot (\omega t + \beta)}} = \frac{u_0 \cdot e^{i \omega t} \cdot e^{i \alpha}}{j_0 \cdot e^{i \omega t} \cdot e^{i \beta}} = \frac{u_0}{j_0} \cdot e^{i (\alpha - \beta)} \in \comp $$
+    \item $\text{Re }Z$: Wirkwiderstand
+    \item $\text{Im }Z$: Blindwiderstand
+    \item $|Z|$: Scheinwiderstand
+\end{itemize} \abstand \abstand
+
+Symbole:
+\begin{itemize}
+    \item Ohmscher Widerstand: $Z = R$
+    \begin{center}
+        \includegraphics{skript/grafiken/widerstaendeohm}
+    \end{center}
+    \item Kapazität $C$ \par
+    kapazitiver Widerstand: $Z = \frac{1}{i \omega C}$
+    \begin{center}
+        \includegraphics{skript/grafiken/widerstaendekap}
+    \end{center}
+    \item Induktivität $L$ \par
+    induktiver Widerstand: $Z = i \omega L$
+    \begin{center}
+        \includegraphics{skript/grafiken/widerstaendeind}
+    \end{center}
+\end{itemize}
+\pagebreak
+
+Beispiel:
+\begin{center}
+    \includegraphics{skript/grafiken/widerstaendeschaltung}
+\end{center}
+Bei welcher Frequenz verhält sich der Gesamtwiderstand wie ein Ohmscher?
+\begin{eqnarray*}
+    Z &=& \frac{(R_1 + i \omega L)(R_2 + \frac{1}{i \omega C})}{R_1 + i \omega L + R_2 + \frac{1}{i \omega C}} \\
+      &=& \frac{R^2_1 R_2 + R_1 R^2_2 + R_1 \frac{1}{\omega^2 C^2} + R_2 L^2 \omega + i (R^2_2 \omega L - \frac{R^2}{\omega C} + \frac{L}{\omega C^2} - \frac{\omega L^2}{C})}{(R_1 + R_2)^2 + (\omega L - \frac{1}{\omega C})^2}
+\end{eqnarray*}
+Suche $\omega$, so dass $\text{Im }Z = 0$ wird.
+\begin{eqnarray*}
+    \omega \left( R^2_2 L - \frac{L^2}{C} \right) &=& \frac{1}{\omega} \left( \frac{R^2_1}{C} - \frac{L}{C^2} \right) \\
+    \omega &=& \sqrt{\frac{\frac{R^2_1}{C} - \frac{L}{C^2}}{R^2_2 L - \frac{L^2}{C}}}
+\end{eqnarray*}
